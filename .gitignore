@@ -1,42 +1,91 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Logs
-logs/
-*.log
-
-# Temporary files
-temp/
-*.tmp
-*.swp
-
-# Output directories
-output/
-covers/
-
-# Metadata and cache
-*.json
-*.db
-*.sqlite
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Virtual environments
-env/
+# Virtual Environment
 venv/
+env/
 ENV/
-.venv/
+env.bak/
+venv.bak/
+cd_ripping_env/
 
-# IDE/editor folders
+# IDE
 .vscode/
 .idea/
-*.sublime-workspace
-*.sublime-project
+*.swp
+*.swo
+*~
 
-# Test and debug artifacts
+# Operating System
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# CD Ripping Output - New nested structure: output/artist/album/
+output/*/
+!output/.gitkeep
+
+# Temporary files from ripping process
+temp/
+*.wav
+*.tmp
+
+# Logs (keep recent ones, but ignore old logs)
+logs/*.log
+
+# Cover Art Cache (images can be re-downloaded)
+covers/
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Audio Files (FLAC files are large, typically stored elsewhere)
+*.flac
+*.mp3
+*.m4a
+*.ogg
+
+# Configuration files with sensitive data
+config.ini
+secrets.json
+.env
+
+# AWS credentials (for future S3 functionality)
+.aws/
+aws-credentials
+
+# Backup files
 *.bak
-*.old
+*.backup
+
+# OS specific
+*.lnk
+
+# Keep example/template files but ignore actual rip data
+rip_info.json
