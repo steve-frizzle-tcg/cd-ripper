@@ -52,9 +52,9 @@ The script automatically creates this structure:
 │   │   └── Album Name/
 │   │       ├── 01. Track Name.flac
 │   │       ├── 02. Track Name.flac
+│   │       ├── cover.jpg
 │   │       └── rip_info.json
 ├── logs/               # Ripping session logs
-├── covers/             # Downloaded album art cache
 └── cd_ripping_env/     # Python virtual environment
 ```
 
@@ -117,16 +117,19 @@ output/
 │       ├── 01. Lonesome Street.flac
 │       ├── 02. New World Towers.flac
 │       ├── 03. Go Out.flac
+│       ├── cover.jpg
 │       └── rip_info.json
 ├── Hole/
 │   └── Celebrity Skin/
 │       ├── 01. Celebrity Skin.flac
 │       ├── 02. Awful.flac
+│       ├── cover.jpg
 │       └── rip_info.json
 └── The Doobie Brothers/
     └── Minute By Minute/
         ├── 01. Here to Love You.flac
         ├── 02. What a Fool Believes.flac
+        ├── cover.jpg
         └── rip_info.json
 ```
 

@@ -58,18 +58,19 @@ temp/
 # Logs (keep recent ones, but ignore old logs)
 logs/*.log
 
-# Cover Art Cache (images can be re-downloaded)
+# Cover Art Cache (legacy - covers now stored with albums)
 covers/
-*.jpg
-*.jpeg
-*.png
-*.gif
 
 # Audio Files (FLAC files are large, typically stored elsewhere)
 *.flac
 *.mp3
 *.m4a
 *.ogg
+
+# Cover Art in Albums (can be re-downloaded)
+cover.jpg
+cover.png
+cover.jpeg
 
 # Configuration files with sensitive data
 config.ini

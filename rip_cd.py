@@ -309,18 +309,15 @@ class CDRipper:
             self.logger.warning(f"MusicBrainz search failed: {e}")
             return None
 
-    def download_cover_art_simple(self, mbid: str, artist: str, album: str) -> Optional[str]:
-        """Simple cover art download with error handling"""
+    def download_cover_art_simple(self, mbid: str, artist: str, album: str, album_dir: Path) -> Optional[str]:
+        """Simple cover art download with error handling - saves to album directory"""
         try:
             url = f"https://coverartarchive.org/release/{mbid}/front"
             response = requests.get(url, timeout=30, stream=True)
             response.raise_for_status()
             
-            # Save cover with safe filename (replace only problematic characters)
-            safe_filename = f"{artist}_{album}".replace('/', '_').replace('\\', '_').replace(':', '_')
-            safe_filename = safe_filename.replace('?', '').replace('*', '').replace('"', "'")
-            safe_filename = safe_filename.replace('<', '').replace('>', '').replace('|', '_')
-            cover_path = self.covers_dir / f"{safe_filename}.jpg"
+            # Save cover directly in the album directory
+            cover_path = album_dir / "cover.jpg"
             
             with open(cover_path, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
@@ -567,7 +564,8 @@ class CDRipper:
                 cover_path = self.download_cover_art_simple(
                     metadata['mbid'], 
                     metadata['artist'], 
-                    metadata['album']
+                    metadata['album'],
+                    album_dir
                 )
             
             # Get FLAC files and add metadata
