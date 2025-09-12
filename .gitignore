@@ -57,10 +57,6 @@ temp/
 
 # Logs (keep recent ones, but ignore old logs)
 logs/*.log
-
-# Cover Art Cache (legacy - covers now stored with albums)
-covers/
-
 # Audio Files (FLAC files are large, typically stored elsewhere)
 *.flac
 *.mp3

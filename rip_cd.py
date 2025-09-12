@@ -51,10 +51,9 @@ class CDRipper:
         self.home = Path.home()
         self.temp_dir = Path(temp_dir) if temp_dir else self.home / "cd_ripping" / "temp"
         self.output_dir = Path(output_dir) if output_dir else self.home / "cd_ripping" / "output"
-        self.covers_dir = self.home / "cd_ripping" / "covers"
         
         # Ensure directories exist
-        for dir_path in [self.temp_dir, self.output_dir, self.covers_dir]:
+        for dir_path in [self.temp_dir, self.output_dir]:
             dir_path.mkdir(parents=True, exist_ok=True)
 
     def check_cd_presence(self) -> bool:
@@ -200,10 +199,20 @@ class CDRipper:
         album = input("Album name: ").strip() or "Unknown Album"
         year = input("Year (optional): ").strip() or "Unknown"
         
+        # Ask for disc number for multi-disc albums
+        disc_input = input("Disc number (press Enter for 1): ").strip()
+        try:
+            disc_number = int(disc_input) if disc_input else 1
+            if disc_number < 1:
+                disc_number = 1
+        except ValueError:
+            disc_number = 1
+            
         return {
             'artist': artist,
             'album': album,
             'date': year,
+            'disc_number': disc_number,
             'mbid': 'user-entered',
             'method': 'manual'
         }
@@ -253,15 +262,20 @@ class CDRipper:
             if not best_release:
                 return None
             
-            # Extract track information
+            # Extract track information and disc information
             tracks = []
+            disc_count = len(best_release.get('medium-list', []))
             medium_list = best_release.get('medium-list', [])
-            for medium in medium_list:
-                for track in medium.get('track-list', []):
+            
+            for disc_num, medium in enumerate(medium_list, 1):
+                disc_tracks = medium.get('track-list', [])
+                for track_num, track in enumerate(disc_tracks, 1):
                     recording = track.get('recording', {})
                     tracks.append({
-                        'title': recording.get('title', f"Track {len(tracks) + 1:02d}"),
-                        'length': track.get('length')
+                        'title': recording.get('title', f"Track {track_num:02d}"),
+                        'length': track.get('length'),
+                        'disc_number': disc_num,
+                        'track_number': track_num
                     })
             
             # Get proper artist name from artist-credits
@@ -277,6 +291,7 @@ class CDRipper:
                 'date': best_release.get('date', 'Unknown'),
                 'mbid': best_release['id'],
                 'tracks': tracks,
+                'disc_count': disc_count,
                 'method': 'musicbrainz-enhanced'
             }
             
@@ -368,8 +383,8 @@ class CDRipper:
             self.logger.error(f"Failed to reorganize directory: {e}")
             return old_album_dir
 
-    def rename_track_files(self, album_dir: Path, metadata: Dict) -> List[Path]:
-        """Rename track files with proper names from metadata"""
+    def rename_track_files(self, album_dir: Path, metadata: Dict, disc_number: int = 1) -> List[Path]:
+        """Rename track files with proper names from metadata using Disc-Track format"""
         try:
             flac_files = sorted(album_dir.glob("Track_*.flac"))
             tracks = metadata.get('tracks', [])
@@ -389,7 +404,8 @@ class CDRipper:
                     safe_title = safe_title.replace('?', '').replace('*', '').replace('"', "'")
                     safe_title = safe_title.replace('<', '').replace('>', '').replace('|', '_')
                     
-                    new_filename = f"{i+1:02d}. {safe_title}.flac"
+                    # New format: Disc-Track. Title.flac (e.g., 01-01. Track Name.flac)
+                    new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_title}.flac"
                     new_path = album_dir / new_filename
                     
                     if flac_path != new_path:
@@ -425,14 +441,26 @@ class CDRipper:
                     audio['ARTIST'] = metadata['artist']
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
-                    audio['TRACKNUMBER'] = str(i + 1)
-                    audio['TOTALTRACKS'] = str(total_tracks)
                     
-                    # Track title from MusicBrainz or fallback
-                    if i < len(tracks):
+                    # Enhanced track numbering with disc information
+                    if i < len(tracks) and 'disc_number' in tracks[i]:
+                        disc_num = tracks[i]['disc_number']
+                        track_num = tracks[i]['track_number']
+                        audio['TRACKNUMBER'] = f"{disc_num:02d}-{track_num:02d}"
+                        audio['DISCNUMBER'] = str(disc_num)
+                        audio['TOTALDISCS'] = str(metadata.get('disc_count', 1))
                         audio['TITLE'] = tracks[i]['title']
                     else:
-                        audio['TITLE'] = f"Track {i+1:02d}"
+                        # Fallback for single disc or unknown structure
+                        audio['TRACKNUMBER'] = f"01-{i+1:02d}"
+                        audio['DISCNUMBER'] = "1"
+                        audio['TOTALDISCS'] = "1"
+                        if i < len(tracks):
+                            audio['TITLE'] = tracks[i]['title']
+                        else:
+                            audio['TITLE'] = f"Track {i+1:02d}"
+                    
+                    audio['TOTALTRACKS'] = str(total_tracks)
                     
                     if metadata.get('mbid') and metadata['mbid'] != 'user-entered':
                         audio['MUSICBRAINZ_ALBUMID'] = metadata['mbid']
@@ -464,16 +492,19 @@ class CDRipper:
             self.logger.info("Adding metadata to FLAC files...")
             
             total_tracks = len(flac_files)
+            disc_number = metadata.get('disc_number', 1)
             
             for i, flac_path in enumerate(flac_files, 1):
                 try:
                     audio = FLAC(str(flac_path))
                     
-                    # Basic metadata
+                    # Basic metadata with disc-track format
                     audio['ARTIST'] = metadata['artist']
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
-                    audio['TRACKNUMBER'] = str(i)
+                    audio['TRACKNUMBER'] = f"{disc_number:02d}-{i:02d}"
+                    audio['DISCNUMBER'] = str(disc_number)
+                    audio['TOTALDISCS'] = "1"  # Will be updated if multi-disc detected
                     audio['TOTALTRACKS'] = str(total_tracks)
                     
                     # Add track title (user can rename later)
@@ -571,12 +602,16 @@ class CDRipper:
             # Get FLAC files and add metadata
             flac_files = sorted(album_dir.glob("Track_*.flac"))
             if flac_files:
+                # Use disc number from user input or MusicBrainz data
+                disc_number = metadata.get('disc_number', 1)
+                
                 if metadata.get('tracks'):
                     # Enhanced metadata with track names
-                    flac_files = self.rename_track_files(album_dir, metadata)
+                    flac_files = self.rename_track_files(album_dir, metadata, disc_number=disc_number)
                     self.add_enhanced_metadata(flac_files, metadata, cover_path)
                 else:
                     # Basic metadata - ask user for track names
+                    flac_files = self.rename_track_files(album_dir, metadata, disc_number=disc_number)
                     self.add_basic_metadata(flac_files, metadata, cover_path)
             
             # Save metadata file for reference

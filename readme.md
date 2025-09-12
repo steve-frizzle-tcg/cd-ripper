@@ -50,8 +50,8 @@ The script automatically creates this structure:
 ├── output/             # Final organized FLAC files
 │   ├── Artist Name/
 │   │   └── Album Name/
-│   │       ├── 01. Track Name.flac
-│   │       ├── 02. Track Name.flac
+│   │       ├── 01-01. Track Name.flac
+│   │       ├── 01-02. Track Name.flac
 │   │       ├── cover.jpg
 │   │       └── rip_info.json
 ├── logs/               # Ripping session logs
@@ -104,31 +104,37 @@ python3 rip_cd.py
 
 ### Interactive Process
 1. **Insert CD** and press Enter to start
-2. **Enter basic info**: Artist name, album name, year (optional)
+2. **Enter basic info**: Artist name, album name, year (optional), disc number (for multi-disc albums)
 3. **Automatic ripping**: Script rips all tracks (5-10 minutes typical)
 4. **Metadata enhancement**: Automatic MusicBrainz lookup and organization
 5. **Completion**: Files organized in `output/Artist/Album/` directory
+
+### Multi-Disc Album Support
+- **File naming**: Uses `Disc-Track` format (e.g., `01-01`, `02-03`)
+- **Single discs**: Automatically use `01-XX` format for consistency
+- **Multi-disc sets**: Specify disc number during initial setup
+- **Metadata**: Includes proper disc number and total disc count in FLAC tags
 
 ### Example Output Structure
 ```
 output/
 ├── Blur/
 │   └── The Magic Whip/
-│       ├── 01. Lonesome Street.flac
-│       ├── 02. New World Towers.flac
-│       ├── 03. Go Out.flac
+│       ├── 01-01. Lonesome Street.flac
+│       ├── 01-02. New World Towers.flac
+│       ├── 01-03. Go Out.flac
 │       ├── cover.jpg
 │       └── rip_info.json
 ├── Hole/
 │   └── Celebrity Skin/
-│       ├── 01. Celebrity Skin.flac
-│       ├── 02. Awful.flac
+│       ├── 01-01. Celebrity Skin.flac
+│       ├── 01-02. Awful.flac
 │       ├── cover.jpg
 │       └── rip_info.json
 └── The Doobie Brothers/
     └── Minute By Minute/
-        ├── 01. Here to Love You.flac
-        ├── 02. What a Fool Believes.flac
+        ├── 01-01. Here to Love You.flac
+        ├── 01-02. What a Fool Believes.flac
         ├── cover.jpg
         └── rip_info.json
 ```
