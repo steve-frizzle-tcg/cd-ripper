@@ -104,10 +104,30 @@ python3 rip_cd.py
 
 ### Interactive Process
 1. **Insert CD** and press Enter to start
-2. **Enter basic info**: Artist name, album name, year (optional), disc number (for multi-disc albums)
-3. **Automatic ripping**: Script rips all tracks (5-10 minutes typical)
-4. **Metadata enhancement**: Automatic MusicBrainz lookup and organization
-5. **Completion**: Files organized in `output/Artist/Album/` directory
+2. **Select album type**: Regular Album, Soundtrack, or Compilation
+3. **Enter basic info**: Artist/album details based on type, year (optional), disc number (for multi-disc albums)
+4. **Automatic ripping**: Script rips all tracks (5-10 minutes typical)
+5. **Metadata enhancement**: Automatic MusicBrainz lookup with Various Artists support
+6. **Completion**: Files organized in `output/Artist/Album/` directory
+
+### Album Type Support
+
+#### **Regular Albums (Single Artist)**
+- Standard single-artist releases
+- Artist name applies to all tracks
+- Standard MusicBrainz lookup by artist and album
+
+#### **Soundtracks (Various Artists)**
+- Movie, TV show, or game soundtracks
+- Organized in `output/Soundtracks/Album Name/` directory structure
+- Individual track artists from MusicBrainz or manual entry
+- Enhanced filename format: `01-01. Artist - Track Title.flac`
+- Automatic cleanup of problematic artist names (e.g., dialogue tracks)
+
+#### **Compilations (Various Artists)**
+- "Now That's What I Call Music" style releases
+- Multiple artists across different tracks
+- Same handling as soundtracks with Various Artists support
 
 ### Multi-Disc Album Support
 - **File naming**: Uses `Disc-Track` format (e.g., `01-01`, `02-03`)
@@ -131,10 +151,30 @@ output/
 │       ├── 01-02. Awful.flac
 │       ├── cover.jpg
 │       └── rip_info.json
-└── The Doobie Brothers/
-    └── Minute By Minute/
-        ├── 01-01. Here to Love You.flac
-        ├── 01-02. What a Fool Believes.flac
+├── The Doobie Brothers/
+│   └── Minute By Minute/
+│       ├── 01-01. Here to Love You.flac
+│       ├── 01-02. What a Fool Believes.flac
+│       ├── cover.jpg
+│       └── rip_info.json
+├── Various Artists/
+│   └── Now That's What I Call Music! 25/
+│       ├── 01-01. Spice Girls - Wannabe.flac
+│       ├── 01-02. Oasis - Don't Look Back in Anger.flac
+│       ├── 01-03. Blur - Song 2.flac
+│       ├── cover.jpg
+│       └── rip_info.json
+└── Soundtracks/
+    ├── Guardians of the Galaxy Soundtrack/
+    │   ├── 01-01. Blue Swede - Hooked on a Feeling.flac
+    │   ├── 01-02. Raspberries - Go All the Way.flac
+    │   ├── 01-03. Norman Greenbaum - Spirit in the Sky.flac
+    │   ├── cover.jpg
+    │   └── rip_info.json
+    └── Higher Learning: Music From the Motion Picture/
+        ├── 01-01. Ice Cube - Higher.flac
+        ├── 01-02. Ice Cube - Something to Think About.flac
+        ├── 01-08. Unknown Artist - My New Friend.flac
         ├── cover.jpg
         └── rip_info.json
 ```
@@ -171,6 +211,8 @@ output/
 - **MusicBrainz failures**: Script continues with manual metadata entry
 - **Track ripping errors**: Individual track failures don't stop the process
 - **Permission errors**: Ensure user has access to CD drive (`/dev/cdrom`)
+- **Dialogue tracks**: Movie soundtracks may include dialogue/scene audio with problematic metadata - automatically cleaned to "Unknown Artist"
+- **Invalid artist names**: Malformed MusicBrainz data (like " & ") is automatically cleaned or replaced with "Unknown Artist"
 
 ### Log Files
 Check `logs/rip_cd_YYYYMMDD_HHMMSS.log` for detailed error information.

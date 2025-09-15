@@ -56,6 +56,28 @@ class CDRipper:
         for dir_path in [self.temp_dir, self.output_dir]:
             dir_path.mkdir(parents=True, exist_ok=True)
 
+    def clean_artist_name(self, artist: str) -> str:
+        """Clean and validate artist names, provide fallbacks for problematic data"""
+        if not artist or not artist.strip():
+            return "Unknown Artist"
+        
+        # Handle specific problematic cases
+        artist = artist.strip()
+        if artist in [" & ", "&", " ", "  ", "   "]:
+            return "Unknown Artist"
+        
+        # Clean up common problems
+        if artist.startswith(" & "):
+            artist = artist[3:].strip()
+        if artist.endswith(" & "):
+            artist = artist[:-3].strip()
+        
+        # If still empty or just symbols, fallback
+        if not artist or artist.replace("&", "").replace(" ", "").strip() == "":
+            return "Unknown Artist"
+        
+        return artist
+
     def check_cd_presence(self) -> bool:
         """Check if CD is present in drive"""
         try:
@@ -191,12 +213,49 @@ class CDRipper:
         
         return successful_tracks
 
+    def get_album_type(self) -> str:
+        """Get album type from user"""
+        print("\n=== Album Type Selection ===")
+        print("1. Regular Album (single artist)")
+        print("2. Soundtrack (multiple artists, movie/TV/game soundtrack)")
+        print("3. Compilation (multiple artists, various artists collection)")
+        
+        while True:
+            choice = input("Select album type (1-3): ").strip()
+            if choice == "1":
+                return "regular"
+            elif choice == "2":
+                return "soundtrack"
+            elif choice == "3":
+                return "compilation"
+            else:
+                print("Please enter 1, 2, or 3")
+
     def get_user_metadata(self) -> Dict:
-        """Get basic metadata from user"""
-        print("\n=== Album Information ===")
+        """Get basic metadata from user based on album type"""
+        album_type = self.get_album_type()
+        
+        print(f"\n=== {album_type.title()} Information ===")
         print("Please enter the album information (will be refined later with MusicBrainz lookup):")
-        artist = input("Artist name: ").strip() or "Unknown Artist"
-        album = input("Album name: ").strip() or "Unknown Album"
+        
+        if album_type == "regular":
+            # Regular album - single artist
+            artist = input("Artist name: ").strip() or "Unknown Artist"
+            album = input("Album name: ").strip() or "Unknown Album"
+            album_artist = artist
+        elif album_type == "soundtrack":
+            # Soundtrack - various artists
+            album = input("Soundtrack name (e.g., 'The Matrix Soundtrack'): ").strip() or "Unknown Soundtrack"
+            artist = "Various Artists"
+            album_artist = "Various Artists"
+            print(f"Artist will be set to: {artist}")
+        else:  # compilation
+            # Compilation - various artists
+            album = input("Compilation name (e.g., 'Now That's What I Call Music 50'): ").strip() or "Unknown Compilation"
+            artist = "Various Artists"
+            album_artist = "Various Artists"
+            print(f"Artist will be set to: {artist}")
+        
         year = input("Year (optional): ").strip() or "Unknown"
         
         # Ask for disc number for multi-disc albums
@@ -211,26 +270,39 @@ class CDRipper:
         return {
             'artist': artist,
             'album': album,
+            'album_artist': album_artist,
             'date': year,
             'disc_number': disc_number,
+            'album_type': album_type,
             'mbid': 'user-entered',
             'method': 'manual'
         }
 
-    def search_musicbrainz_enhanced(self, artist: str, album: str, track_count: int) -> Optional[Dict]:
+    def search_musicbrainz_enhanced(self, artist: str, album: str, track_count: int, album_type: str = "regular") -> Optional[Dict]:
         """Enhanced MusicBrainz search with track information"""
         try:
-            self.logger.info(f"Searching MusicBrainz for: {artist} - {album} ({track_count} tracks)")
+            self.logger.info(f"Searching MusicBrainz for: {artist} - {album} ({track_count} tracks, type: {album_type})")
             
-            # Search for releases
-            query = f'artist:"{artist}" AND release:"{album}"'
-            releases = musicbrainzngs.search_releases(query=query, limit=10)
+            # Search for releases - different strategies for different album types
+            if album_type in ["soundtrack", "compilation"]:
+                # For Various Artists releases, search by album title first
+                query = f'release:"{album}"'
+                self.logger.info("Searching for Various Artists release by album title")
+            else:
+                # Regular album search
+                query = f'artist:"{artist}" AND release:"{album}"'
+            
+            releases = musicbrainzngs.search_releases(query=query, limit=15)
             
             if not releases.get('release-list'):
                 self.logger.info("No exact matches found, trying broader search...")
-                # Try broader search without quotes
-                query = f'artist:{artist} AND release:{album}'
-                releases = musicbrainzngs.search_releases(query=query, limit=10)
+                if album_type in ["soundtrack", "compilation"]:
+                    # Try broader search for Various Artists
+                    query = f'release:{album}'
+                else:
+                    # Try broader search without quotes
+                    query = f'artist:{artist} AND release:{album}'
+                releases = musicbrainzngs.search_releases(query=query, limit=15)
             
             if not releases.get('release-list'):
                 return None
@@ -271,11 +343,32 @@ class CDRipper:
                 disc_tracks = medium.get('track-list', [])
                 for track_num, track in enumerate(disc_tracks, 1):
                     recording = track.get('recording', {})
+                    
+                    # Extract track artist information
+                    track_artist = None
+                    if 'artist-credit' in track:
+                        # Track has specific artist credits
+                        artist_credits = track['artist-credit']
+                        if artist_credits:
+                            # Join multiple artists with " feat. " or " & "
+                            artist_names = []
+                            for credit in artist_credits:
+                                if isinstance(credit, dict) and 'artist' in credit:
+                                    artist_names.append(credit['artist'].get('name', ''))
+                                elif isinstance(credit, str):
+                                    if credit not in [' feat. ', ' & ', ', ']:  # Skip joinphrases
+                                        artist_names.append(credit)
+                            track_artist = ''.join(str(credit.get('joinphrase', '')) if isinstance(credit, dict) else credit for credit in artist_credits if credit)
+                            # Fallback: just join the artist names
+                            if not track_artist:
+                                track_artist = ' & '.join(filter(None, artist_names))
+                    
                     tracks.append({
                         'title': recording.get('title', f"Track {track_num:02d}"),
                         'length': track.get('length'),
                         'disc_number': disc_num,
-                        'track_number': track_num
+                        'track_number': track_num,
+                        'artist': track_artist  # Individual track artist (None for regular albums)
                     })
             
             # Get proper artist name from artist-credits
@@ -348,14 +441,17 @@ class CDRipper:
     def reorganize_album_directory(self, old_album_dir: Path, new_metadata: Dict) -> Path:
         """Reorganize album directory with correct artist and album names"""
         try:
-            # Create new directory structure: output > artist > album
-            # Only replace forward slashes to avoid path issues, keep other characters including spaces
-            safe_artist = new_metadata['artist'].replace('/', '_')
+            # Handle directory structure based on album type
             safe_album = new_metadata['album'].replace('/', '_')
             
-            # Create nested directory structure
-            artist_dir = self.output_dir / safe_artist
-            new_album_dir = artist_dir / safe_album
+            if new_metadata.get('album_type') == 'soundtrack':
+                # Soundtracks go in output/Soundtracks/Album Name
+                new_album_dir = self.output_dir / "Soundtracks" / safe_album
+            else:
+                # Regular albums and compilations use artist directory
+                safe_artist = new_metadata['artist'].replace('/', '_')
+                artist_dir = self.output_dir / safe_artist
+                new_album_dir = artist_dir / safe_album
             
             if old_album_dir == new_album_dir:
                 return old_album_dir  # No change needed
@@ -404,8 +500,19 @@ class CDRipper:
                     safe_title = safe_title.replace('?', '').replace('*', '').replace('"', "'")
                     safe_title = safe_title.replace('<', '').replace('>', '').replace('|', '_')
                     
-                    # New format: Disc-Track. Title.flac (e.g., 01-01. Track Name.flac)
-                    new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_title}.flac"
+                    # New format with optional artist for Various Artists releases
+                    if i < len(tracks) and tracks[i].get('artist') and metadata.get('album_type') in ['soundtrack', 'compilation']:
+                        # Format: 01-01. Artist - Track Title.flac
+                        # Clean the artist name first
+                        clean_artist = self.clean_artist_name(tracks[i]['artist'])
+                        safe_artist = clean_artist.replace('/', '_').replace('\\', '_').replace(':', '_')
+                        safe_artist = safe_artist.replace('?', '').replace('*', '').replace('"', "'")
+                        safe_artist = safe_artist.replace('<', '').replace('>', '').replace('|', '_')
+                        new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_artist} - {safe_title}.flac"
+                    else:
+                        # Regular format: 01-01. Track Title.flac
+                        new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_title}.flac"
+                    
                     new_path = album_dir / new_filename
                     
                     if flac_path != new_path:
@@ -438,9 +545,12 @@ class CDRipper:
                     audio = FLAC(str(flac_path))
                     
                     # Basic metadata
-                    audio['ARTIST'] = metadata['artist']
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
+                    
+                    # Set album artist (for Various Artists releases)
+                    if metadata.get('album_artist'):
+                        audio['ALBUMARTIST'] = metadata['album_artist']
                     
                     # Enhanced track numbering with disc information
                     if i < len(tracks) and 'disc_number' in tracks[i]:
@@ -450,11 +560,18 @@ class CDRipper:
                         audio['DISCNUMBER'] = str(disc_num)
                         audio['TOTALDISCS'] = str(metadata.get('disc_count', 1))
                         audio['TITLE'] = tracks[i]['title']
+                        
+                        # Set track artist (individual track artist or album artist)
+                        if tracks[i].get('artist'):
+                            audio['ARTIST'] = tracks[i]['artist']
+                        else:
+                            audio['ARTIST'] = metadata['artist']
                     else:
                         # Fallback for single disc or unknown structure
                         audio['TRACKNUMBER'] = f"01-{i+1:02d}"
                         audio['DISCNUMBER'] = "1"
                         audio['TOTALDISCS'] = "1"
+                        audio['ARTIST'] = metadata['artist']
                         if i < len(tracks):
                             audio['TITLE'] = tracks[i]['title']
                         else:
@@ -499,13 +616,23 @@ class CDRipper:
                     audio = FLAC(str(flac_path))
                     
                     # Basic metadata with disc-track format
-                    audio['ARTIST'] = metadata['artist']
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
                     audio['TRACKNUMBER'] = f"{disc_number:02d}-{i:02d}"
                     audio['DISCNUMBER'] = str(disc_number)
                     audio['TOTALDISCS'] = "1"  # Will be updated if multi-disc detected
                     audio['TOTALTRACKS'] = str(total_tracks)
+                    
+                    # Set album artist for Various Artists releases
+                    if metadata.get('album_artist'):
+                        audio['ALBUMARTIST'] = metadata['album_artist']
+                    
+                    # For Various Artists releases, ask for individual track artists
+                    if metadata.get('album_type') in ['soundtrack', 'compilation']:
+                        track_artist = input(f"Enter artist for track {i} (or press Enter for 'Unknown Artist'): ").strip()
+                        audio['ARTIST'] = track_artist or "Unknown Artist"
+                    else:
+                        audio['ARTIST'] = metadata['artist']
                     
                     # Add track title (user can rename later)
                     track_title = input(f"Enter title for track {i} (or press Enter for 'Track {i:02d}'): ").strip()
@@ -577,7 +704,8 @@ class CDRipper:
             self.logger.info("=== STEP 2: Adding Metadata ===")
             
             # Try enhanced MusicBrainz lookup first (with track info)
-            mb_metadata = self.search_musicbrainz_enhanced(metadata['artist'], metadata['album'], track_count)
+            album_type = metadata.get('album_type', 'regular')
+            mb_metadata = self.search_musicbrainz_enhanced(metadata['artist'], metadata['album'], track_count, album_type)
             if not mb_metadata:
                 # Fallback to simple search
                 mb_metadata = self.search_musicbrainz_simple(metadata['artist'], metadata['album'])
@@ -649,11 +777,12 @@ def main():
     """Main entry point"""
     ripper = CDRipper()
     
-    print("=== CD Ripper - Part 1 (Simplified) ===")
+    print("=== CD Ripper - Enhanced Version ===")
     print("This script will:")
     print("1. Rip all tracks to FLAC files")
-    print("2. Add basic metadata")
-    print("3. Optionally download cover art")
+    print("2. Add metadata (supports Regular Albums, Soundtracks, and Compilations)")
+    print("3. Handle Various Artists releases with per-track artist information")
+    print("4. Optionally download cover art")
     print()
     print("Insert CD and press Enter to start...")
     input()
