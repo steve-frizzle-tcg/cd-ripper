@@ -105,10 +105,11 @@ python3 rip_cd.py
 ### Interactive Process
 1. **Insert CD** and press Enter to start
 2. **Select album type**: Regular Album, Soundtrack, or Compilation
-3. **Enter basic info**: Artist/album details based on type, year (optional), disc number (for multi-disc albums)
-4. **Automatic ripping**: Script rips all tracks (5-10 minutes typical)
-5. **Metadata enhancement**: Automatic MusicBrainz lookup with Various Artists support
-6. **Completion**: Files organized in `output/Artist/Album/` directory
+3. **Enter catalog number** (optional): Provides most accurate metadata lookup
+4. **Enter basic info**: Artist/album details based on type, year (optional), disc number (for multi-disc albums)
+5. **Automatic ripping**: Script rips all tracks (5-10 minutes typical)
+6. **Metadata enhancement**: Automatic MusicBrainz lookup with catalog number priority
+7. **Completion**: Files organized in appropriate directory structure
 
 ### Album Type Support
 
@@ -128,6 +129,61 @@ python3 rip_cd.py
 - "Now That's What I Call Music" style releases
 - Multiple artists across different tracks
 - Same handling as soundtracks with Various Artists support
+
+### Catalog Number Support
+
+#### **What are Catalog Numbers?**
+Unique identifiers printed on CDs, usually on the spine, back cover, or disc itself:
+- **Examples**: `GEFD-24617`, `CDV 2644`, `7599-26985-2`, `B0001234-02`
+- **Benefits**: Most precise metadata lookup method available
+- **Location**: Check CD spine, back cover, or printed on the disc
+
+#### **Enhanced Input Handling**
+- **Flexible Format**: Accepts various formats with/without spaces and hyphens
+- **Auto-Normalization**: Automatically standardizes format (removes spaces, etc.)
+- **Validation**: Checks format and prompts for confirmation
+- **Multiple Attempts**: Up to 3 attempts with helpful error messages
+- **User Confirmation**: Shows normalized version before proceeding
+
+#### **Examples of Input Variations**
+```
+User Input          →  Search Priority        →  Also Searches
+"ACD 8754"          →  1. "ACD 8754"         →  "ACD8754", "ACD-8754"
+"cdv-2644"          →  1. "CDV-2644"         →  "CDV2644", "CDV 2644"  
+"GEFD24617"         →  1. "GEFD24617"        →  "GEFD-24617", "GEFD 24617"
+"B0001234 02"       →  1. "B0001234 02"      →  "B000123402", "B0001234-02"
+```
+
+#### **Enhanced Search Strategy**
+1. **Original First**: Always tries your exact input first (most important!)
+2. **Format Variations**: Tries with/without spaces and hyphens automatically
+3. **Common Patterns**: Tests typical catalog number formats
+4. **Comprehensive Coverage**: Up to 6+ variations per catalog number
+5. **Track Validation**: Only shows releases matching your CD's track count
+6. **Graceful Fallback**: Falls back to artist/album search if catalog fails
+
+#### **User Validation Process**
+1. **Format Validation**: Checks catalog number format before searching
+2. **Search Results**: Shows all matching releases with track counts
+3. **Multiple Matches**: User selects correct release if multiple found
+4. **Confirmation**: Displays found metadata for user verification
+5. **Fallback Option**: Can skip catalog search and use manual entry
+
+#### **When to Use Catalog Numbers**
+- **Reissues/Remasters**: Multiple versions of same album exist
+- **Import CDs**: Unusual or foreign releases  
+- **Compilations**: Generic titles like "Greatest Hits"
+- **Soundtracks**: Multiple soundtrack versions exist
+- **Box Sets**: Complex multi-disc releases
+- **Rare/Obscure**: Hard to find releases with unusual metadata
+
+#### **Error Handling**
+- **Invalid Format**: Prompts for re-entry with format guidance
+- **No Results**: Gracefully falls back to standard search after trying all variations
+- **Multiple Matches**: User selection with detailed information
+- **Network Issues**: Continues with manual metadata entry
+- **Format Preservation**: Always tries your original input first, then variations
+- **Comprehensive Search**: Tries 3-6 format variations automatically
 
 ### Multi-Disc Album Support
 - **File naming**: Uses `Disc-Track` format (e.g., `01-01`, `02-03`)
@@ -206,6 +262,30 @@ output/
 
 ## Troubleshooting
 
+### Artist Name Preferences
+
+#### **Language Choice**
+When MusicBrainz returns artist names in different languages/scripts:
+- **User Choice**: System detects when MusicBrainz name differs significantly from your input
+- **Example**: Your input "Tchaikovsky" vs MusicBrainz "Пётр Ильич Чайковский" (Russian)
+- **Interactive Prompt**: Choose between your input or MusicBrainz version
+- **Default**: Uses your original input to maintain consistent English naming
+
+### Directory Management
+
+#### **Automatic Cleanup**
+- **Smart Reorganization**: When metadata changes artist names, files move to correct directories
+- **Empty Directory Removal**: Automatically removes empty directories after reorganization
+- **Safe Operation**: Only removes directories confirmed to be completely empty
+- **Detailed Logging**: Shows what files were moved and which directories were cleaned up
+
+#### **Manual Cleanup Tool**
+Run `python3 cleanup_empty_dirs.py` to:
+- Scan for empty artist directories
+- Show which directories contain albums vs. empty ones
+- Safely remove empty directories with confirmation
+- Perfect for cleaning up after reorganizations
+
 ### Common Issues
 - **No CD detected**: Check CD drive connection and permissions
 - **MusicBrainz failures**: Script continues with manual metadata entry
@@ -213,6 +293,11 @@ output/
 - **Permission errors**: Ensure user has access to CD drive (`/dev/cdrom`)
 - **Dialogue tracks**: Movie soundtracks may include dialogue/scene audio with problematic metadata - automatically cleaned to "Unknown Artist"
 - **Invalid artist names**: Malformed MusicBrainz data (like " & ") is automatically cleaned or replaced with "Unknown Artist"
+- **Catalog number format**: Invalid catalog numbers are rejected with format guidance - enter 3-20 alphanumeric characters
+- **Catalog number not found**: System falls back to artist/album search automatically
+- **Multiple catalog matches**: User prompted to select correct release from list
+- **Foreign language names**: System prompts to choose between your input and MusicBrainz version when significantly different
+- **Empty directories**: Automatically cleaned up during reorganization; use cleanup script for manual cleanup
 
 ### Log Files
 Check `logs/rip_cd_YYYYMMDD_HHMMSS.log` for detailed error information.

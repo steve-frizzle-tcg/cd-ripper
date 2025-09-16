@@ -10,6 +10,7 @@ import subprocess
 import time
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 import musicbrainzngs
@@ -77,6 +78,98 @@ class CDRipper:
             return "Unknown Artist"
         
         return artist
+
+    def is_same_artist_different_language(self, name1: str, name2: str) -> bool:
+        """Check if two artist names are likely the same person in different languages/scripts"""
+        # This is a conservative check - we mostly want to avoid prompting for obvious cases
+        # For now, we'll let most different-script names prompt the user to choose
+        
+        # Check if they're very similar (just different capitalization/spacing)
+        name1_clean = ''.join(name1.lower().split())
+        name2_clean = ''.join(name2.lower().split())
+        
+        if name1_clean == name2_clean:
+            return True  # Same name, just formatting differences
+        
+        # For different scripts (like Cyrillic vs Latin), let user choose
+        # This is safer than trying to guess if they're the same person
+        return False
+
+    def normalize_catalog_number(self, catalog: str) -> str:
+        """Normalize catalog number by removing spaces/hyphens and standardizing format"""
+        if not catalog:
+            return ""
+        
+        # Remove all spaces and hyphens, convert to uppercase
+        normalized = catalog.strip().replace(" ", "").replace("-", "").upper()
+        
+        return normalized
+
+    def validate_catalog_format(self, catalog: str) -> bool:
+        """Basic validation of catalog number format"""
+        if not catalog:
+            return False
+        
+        # Most catalog numbers are 6-15 characters, alphanumeric with some special chars
+        if len(catalog) < 3 or len(catalog) > 20:
+            return False
+        
+        # Should contain at least some alphanumeric characters
+        if not re.search(r'[A-Z0-9]', catalog):
+            return False
+        
+        return True
+
+    def get_catalog_number_with_validation(self) -> Optional[str]:
+        """Get and validate catalog number with multiple attempts"""
+        print("\n=== Catalog Number (Optional) ===")
+        print("Catalog numbers provide the most accurate metadata lookup.")
+        print("Common locations: CD spine, back cover, or printed on disc")
+        print("Examples: 'GEFD-24617', 'CDV 2644', '7599-26985-2', 'B0001234-02'")
+        print("Note: Spaces and hyphens will be automatically normalized")
+        
+        attempts = 0
+        max_attempts = 3
+        
+        while attempts < max_attempts:
+            catalog_input = input(f"Catalog number (Enter to skip, attempt {attempts + 1}/{max_attempts}): ").strip()
+            
+            if not catalog_input:
+                return None
+            
+            # Normalize the input
+            normalized_catalog = self.normalize_catalog_number(catalog_input)
+            
+            # Validate format
+            if not self.validate_catalog_format(normalized_catalog):
+                print(f"❌ Invalid catalog number format: '{catalog_input}'")
+                print("   Catalog numbers should be 3-20 characters with letters/numbers")
+                attempts += 1
+                continue
+            
+            # Show what will be searched and ask for confirmation
+            original_input = catalog_input.strip()
+            if normalized_catalog != original_input:
+                print(f"📝 Will search for: '{original_input}' (original) and '{normalized_catalog}' (normalized) plus common variations")
+                confirm = input(f"Use catalog number '{original_input}'? (y/n/retry): ").lower().strip()
+            else:
+                confirm = input(f"Use catalog number '{original_input}'? (y/n/retry): ").lower().strip()
+            
+            # Return the original input, not normalized - we'll try both in search
+            catalog_to_return = original_input
+            
+            if confirm in ['y', 'yes', '']:
+                return catalog_to_return
+            elif confirm in ['n', 'no']:
+                return None
+            elif confirm in ['r', 'retry']:
+                attempts += 1
+                continue
+            else:
+                print("Please enter 'y' for yes, 'n' for no, or 'retry' to try again")
+        
+        print("❌ Maximum attempts reached. Continuing without catalog number.")
+        return None
 
     def check_cd_presence(self) -> bool:
         """Check if CD is present in drive"""
@@ -235,6 +328,9 @@ class CDRipper:
         """Get basic metadata from user based on album type"""
         album_type = self.get_album_type()
         
+        # Get and validate catalog number
+        catalog_number = self.get_catalog_number_with_validation()
+        
         print(f"\n=== {album_type.title()} Information ===")
         print("Please enter the album information (will be refined later with MusicBrainz lookup):")
         
@@ -274,12 +370,233 @@ class CDRipper:
             'date': year,
             'disc_number': disc_number,
             'album_type': album_type,
+            'catalog_number': catalog_number,
             'mbid': 'user-entered',
             'method': 'manual'
         }
 
-    def search_musicbrainz_enhanced(self, artist: str, album: str, track_count: int, album_type: str = "regular") -> Optional[Dict]:
-        """Enhanced MusicBrainz search with track information"""
+    def _extract_release_metadata(self, release_info: dict, catalog_number: str = None) -> Dict:
+        """Extract metadata from MusicBrainz release info"""
+        metadata = {
+            'mbid': release_info['id'],
+            'album': release_info['title'],
+            'date': release_info.get('date', ''),
+            'country': release_info.get('country', ''),
+            'catalog_number': catalog_number,
+            'tracks': [],
+            'disc_count': len(release_info.get('medium-list', []))
+        }
+        
+        # Get artist information
+        if 'artist-credit' in release_info:
+            artist_credits = release_info['artist-credit']
+            if len(artist_credits) == 1 and isinstance(artist_credits[0], dict):
+                metadata['artist'] = artist_credits[0]['artist']['name']
+                metadata['album_artist'] = artist_credits[0]['artist']['name']
+            else:
+                metadata['artist'] = 'Various Artists'
+                metadata['album_artist'] = 'Various Artists'
+        
+        # Extract track information
+        track_number = 1
+        for disc_num, medium in enumerate(release_info.get('medium-list', []), 1):
+            for track in medium.get('track-list', []):
+                track_info = {
+                    'number': track_number,
+                    'disc': disc_num,
+                    'title': track['recording']['title'],
+                    'length': track['recording'].get('length'),
+                    'mbid': track['recording']['id']
+                }
+                
+                # Get track artist if different from album artist
+                if 'artist-credit' in track['recording']:
+                    track_credits = track['recording']['artist-credit']
+                    if isinstance(track_credits, list) and track_credits:
+                        track_info['artist'] = track_credits[0]['artist']['name']
+                
+                metadata['tracks'].append(track_info)
+                track_number += 1
+        
+        return metadata
+
+    def search_musicbrainz_by_catalog(self, catalog_number: str, track_count: int) -> Optional[Dict]:
+        """Search MusicBrainz by catalog number with enhanced error handling"""
+        try:
+            # Normalize catalog number for search
+            normalized_catalog = self.normalize_catalog_number(catalog_number)
+            original_catalog = catalog_number.strip()
+            
+            self.logger.info(f"Searching MusicBrainz by catalog number: {original_catalog}")
+            
+            # Build comprehensive search variations
+            search_variations = []
+            
+            # 1. Original user input (most important!)
+            search_variations.append(original_catalog)
+            
+            # 2. Normalized version (no spaces/hyphens)
+            if normalized_catalog != original_catalog:
+                search_variations.append(normalized_catalog)
+            
+            # 3. Common space variations based on original input
+            if ' ' in original_catalog:
+                # Try with hyphens instead of spaces
+                with_hyphens = original_catalog.replace(' ', '-')
+                search_variations.append(with_hyphens)
+                
+                # Try without spaces (normalized)
+                without_spaces = original_catalog.replace(' ', '')
+                if without_spaces not in search_variations:
+                    search_variations.append(without_spaces)
+            
+            # 4. If original had hyphens, try with spaces
+            if '-' in original_catalog:
+                with_spaces = original_catalog.replace('-', ' ')
+                search_variations.append(with_spaces)
+            
+            # 5. Add common hyphen positions for normalized version (if no spaces/hyphens in original)
+            if ' ' not in original_catalog and '-' not in original_catalog and len(normalized_catalog) >= 6:
+                # Try common hyphen positions
+                variations_with_hyphens = [
+                    f"{normalized_catalog[:3]}-{normalized_catalog[3:]}",
+                    f"{normalized_catalog[:4]}-{normalized_catalog[4:]}",
+                    f"{normalized_catalog[:5]}-{normalized_catalog[5:]}",
+                    f"{normalized_catalog[:6]}-{normalized_catalog[6:]}",
+                ]
+                search_variations.extend(variations_with_hyphens)
+            
+            # 6. Add common space positions for normalized version (if no spaces/hyphens in original)  
+            if ' ' not in original_catalog and '-' not in original_catalog and len(normalized_catalog) >= 6:
+                # Try common space positions
+                variations_with_spaces = [
+                    f"{normalized_catalog[:3]} {normalized_catalog[3:]}",
+                    f"{normalized_catalog[:4]} {normalized_catalog[4:]}",
+                    f"{normalized_catalog[:5]} {normalized_catalog[5:]}",
+                    f"{normalized_catalog[:6]} {normalized_catalog[6:]}",
+                ]
+                search_variations.extend(variations_with_spaces)
+            
+            # Remove duplicates while preserving order
+            unique_variations = []
+            seen = set()
+            for variation in search_variations:
+                if variation and variation not in seen:
+                    unique_variations.append(variation)
+                    seen.add(variation)
+            
+            self.logger.info(f"Will try {len(unique_variations)} catalog variations: {unique_variations}")
+            
+            found_releases = []
+            
+            for i, variation in enumerate(unique_variations, 1):
+                try:
+                    self.logger.info(f"Trying catalog variation {i}/{len(unique_variations)}: '{variation}'")
+                    result = musicbrainzngs.search_releases(catno=variation, limit=20)
+                    
+                    if result['release-list']:
+                        found_releases.extend(result['release-list'])
+                        self.logger.info(f"✅ Found {len(result['release-list'])} releases for variation: '{variation}'")
+                        # Don't break here - we want to collect all matches for deduplication
+                    else:
+                        self.logger.info(f"❌ No releases found for variation: '{variation}'")
+                    
+                except Exception as e:
+                    self.logger.warning(f"Search failed for catalog variation '{variation}': {e}")
+                    continue
+            
+            if not found_releases:
+                self.logger.info(f"No releases found for any catalog variations of: {catalog_number}")
+                return None
+            
+            # Remove duplicates based on MBID
+            unique_releases = {}
+            for release in found_releases:
+                unique_releases[release['id']] = release
+            
+            self.logger.info(f"Found {len(unique_releases)} unique releases total")
+            
+            # Look for releases that match our track count
+            matching_releases = []
+            for release in unique_releases.values():
+                try:
+                    # Get detailed release info
+                    detailed_release = musicbrainzngs.get_release_by_id(
+                        release['id'], 
+                        includes=['recordings', 'artists', 'labels', 'media']
+                    )
+                    
+                    release_info = detailed_release['release']
+                    
+                    # Check if track count matches
+                    total_tracks = sum(len(medium.get('track-list', [])) 
+                                     for medium in release_info.get('medium-list', []))
+                    
+                    if total_tracks == track_count:
+                        matching_releases.append((release_info, total_tracks))
+                        self.logger.info(f"✅ Track count match: {release_info['title']} ({total_tracks} tracks)")
+                    else:
+                        self.logger.debug(f"Track count mismatch: {release_info['title']} ({total_tracks} vs {track_count} tracks)")
+                        
+                except Exception as e:
+                    self.logger.warning(f"Error processing release {release.get('id', 'unknown')}: {e}")
+                    continue
+            
+            if not matching_releases:
+                # Show user what was found but didn't match
+                print(f"\n📀 Found releases for catalog '{catalog_number}' but none match {track_count} tracks:")
+                for release in list(unique_releases.values())[:5]:  # Show first 5
+                    print(f"   - {release.get('title', 'Unknown')} by {release.get('artist-credit-phrase', 'Unknown')}")
+                print("   Continuing with artist/album search...")
+                return None
+            
+            # If multiple matches, let user choose or take first one
+            if len(matching_releases) > 1:
+                print(f"\n🔍 Multiple releases found for catalog '{catalog_number}' with {track_count} tracks:")
+                for i, (release_info, track_count) in enumerate(matching_releases, 1):
+                    artist_name = release_info.get('artist-credit-phrase', 'Unknown Artist')
+                    date = release_info.get('date', 'Unknown')
+                    country = release_info.get('country', 'Unknown')
+                    print(f"   {i}. {release_info['title']} - {artist_name} ({date}, {country})")
+                
+                while True:
+                    choice = input(f"Select release (1-{len(matching_releases)}) or press Enter for first: ").strip()
+                    if not choice:
+                        selected_release = matching_releases[0][0]
+                        break
+                    try:
+                        choice_num = int(choice)
+                        if 1 <= choice_num <= len(matching_releases):
+                            selected_release = matching_releases[choice_num - 1][0]
+                            break
+                        else:
+                            print(f"Please enter a number between 1 and {len(matching_releases)}")
+                    except ValueError:
+                        print("Please enter a valid number")
+            else:
+                selected_release = matching_releases[0][0]
+            
+            # Extract and return metadata from selected release
+            return self._extract_release_metadata(selected_release, normalized_catalog)
+            
+        except Exception as e:
+            self.logger.error(f"Error searching by catalog number: {e}")
+            return None
+
+    def search_musicbrainz_enhanced(self, artist: str, album: str, track_count: int, album_type: str = "regular", catalog_number: str = None) -> Optional[Dict]:
+        """Enhanced MusicBrainz search with catalog number priority"""
+        
+        # First, try catalog number search if provided
+        if catalog_number:
+            self.logger.info(f"Attempting catalog number search first: {catalog_number}")
+            catalog_result = self.search_musicbrainz_by_catalog(catalog_number, track_count)
+            if catalog_result:
+                self.logger.info("✅ Found exact match by catalog number!")
+                return catalog_result
+            else:
+                self.logger.info("Catalog number search failed, falling back to artist/album search")
+        
+        # Fall back to existing artist/album search
         try:
             self.logger.info(f"Searching MusicBrainz for: {artist} - {album} ({track_count} tracks, type: {album_type})")
             
@@ -456,28 +773,66 @@ class CDRipper:
             if old_album_dir == new_album_dir:
                 return old_album_dir  # No change needed
             
+            self.logger.info(f"Reorganizing: {old_album_dir} -> {new_album_dir}")
+            
             # Create new directory structure
             new_album_dir.mkdir(parents=True, exist_ok=True)
             
             # Move all files from old to new directory
+            files_moved = 0
             for file_path in old_album_dir.iterdir():
                 if file_path.is_file():
                     new_file_path = new_album_dir / file_path.name
                     file_path.rename(new_file_path)
-                    self.logger.info(f"Moved {file_path.name} to new directory")
+                    files_moved += 1
+                    self.logger.info(f"Moved: {file_path.name}")
             
-            # Remove old directory if empty
-            try:
-                old_album_dir.rmdir()
-                self.logger.info(f"Removed old directory: {old_album_dir}")
-            except OSError:
-                self.logger.warning(f"Could not remove old directory: {old_album_dir}")
+            self.logger.info(f"Moved {files_moved} files to new location")
+            
+            # Clean up old directory structure safely
+            self.cleanup_empty_directories(old_album_dir.parent, old_album_dir)
             
             return new_album_dir
             
         except Exception as e:
             self.logger.error(f"Failed to reorganize directory: {e}")
             return old_album_dir
+
+    def cleanup_empty_directories(self, artist_dir: Path, album_dir: Path):
+        """Safely clean up empty directories after reorganization"""
+        try:
+            # First, try to remove the album directory
+            if album_dir.exists():
+                try:
+                    # Check if directory is empty
+                    if not any(album_dir.iterdir()):
+                        album_dir.rmdir()
+                        self.logger.info(f"Removed empty album directory: {album_dir}")
+                    else:
+                        self.logger.warning(f"Album directory not empty, keeping: {album_dir}")
+                        remaining_files = list(album_dir.iterdir())
+                        self.logger.info(f"Remaining files: {[f.name for f in remaining_files]}")
+                        return  # Don't clean up artist dir if album dir has files
+                except OSError as e:
+                    self.logger.warning(f"Could not remove album directory {album_dir}: {e}")
+                    return
+            
+            # Then, try to remove the artist directory if it's empty
+            if artist_dir.exists() and artist_dir != self.output_dir:
+                try:
+                    # Check if artist directory is empty
+                    if not any(artist_dir.iterdir()):
+                        artist_dir.rmdir()
+                        self.logger.info(f"Removed empty artist directory: {artist_dir}")
+                    else:
+                        remaining_items = list(artist_dir.iterdir())
+                        self.logger.info(f"Artist directory not empty, keeping: {artist_dir}")
+                        self.logger.info(f"Contains: {[item.name for item in remaining_items]}")
+                except OSError as e:
+                    self.logger.warning(f"Could not remove artist directory {artist_dir}: {e}")
+                    
+        except Exception as e:
+            self.logger.error(f"Error during directory cleanup: {e}")
 
     def rename_track_files(self, album_dir: Path, metadata: Dict, disc_number: int = 1) -> List[Path]:
         """Rename track files with proper names from metadata using Disc-Track format"""
@@ -703,15 +1058,46 @@ class CDRipper:
             # STEP 2: Try to enhance metadata (optional)
             self.logger.info("=== STEP 2: Adding Metadata ===")
             
-            # Try enhanced MusicBrainz lookup first (with track info)
+            # Try enhanced MusicBrainz lookup first (with track info and catalog number)
             album_type = metadata.get('album_type', 'regular')
-            mb_metadata = self.search_musicbrainz_enhanced(metadata['artist'], metadata['album'], track_count, album_type)
+            catalog_number = metadata.get('catalog_number')
+            mb_metadata = self.search_musicbrainz_enhanced(
+                metadata['artist'], 
+                metadata['album'], 
+                track_count, 
+                album_type,
+                catalog_number
+            )
             if not mb_metadata:
                 # Fallback to simple search
                 mb_metadata = self.search_musicbrainz_simple(metadata['artist'], metadata['album'])
             
             if mb_metadata:
-                metadata.update(mb_metadata)
+                # Check if MusicBrainz artist differs significantly from user input
+                original_artist = metadata['artist']
+                mb_artist = mb_metadata.get('artist', original_artist)
+                
+                # Ask user if they want to keep original artist name vs MusicBrainz version
+                if original_artist.lower() != mb_artist.lower() and not self.is_same_artist_different_language(original_artist, mb_artist):
+                    print(f"\n🎵 Artist Name Choice:")
+                    print(f"   1. Your input: '{original_artist}' (keeps English/familiar name)")
+                    print(f"   2. MusicBrainz: '{mb_artist}' (official database name)")
+                    print(f"   Note: This affects folder organization (output/{original_artist}/ vs output/{mb_artist}/)")
+                    choice = input("Use (1) Your input or (2) MusicBrainz version? [1]: ").strip()
+                    if choice == "2":
+                        # Use MusicBrainz artist
+                        metadata.update(mb_metadata)
+                        self.logger.info(f"Using MusicBrainz artist name: '{mb_artist}'")
+                    else:
+                        # Keep original artist, but use other MusicBrainz data
+                        mb_metadata['artist'] = original_artist
+                        mb_metadata['album_artist'] = original_artist
+                        metadata.update(mb_metadata)
+                        self.logger.info(f"Keeping original artist name: '{original_artist}'")
+                else:
+                    # Use MusicBrainz data as-is (names are similar)
+                    metadata.update(mb_metadata)
+                
                 self.logger.info(f"Enhanced metadata from MusicBrainz: {metadata['method']}")
                 
                 # Reorganize directory with correct artist/album names
