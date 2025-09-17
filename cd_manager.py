@@ -125,6 +125,16 @@ def main():
     date_parser.add_argument('--export', help='Export analysis to JSON file')
     date_parser.add_argument('--show-all', action='store_true', help='Show all albums, not just problematic ones')
     
+    # Multi-disc fixer tool
+    multifix_parser = subparsers.add_parser('fix-multidisc', help='Fix multi-disc album metadata (DISCNUMBER, TRACKNUMBER)')
+    multifix_parser.add_argument('album_path', help='Path to multi-disc album directory')
+    multifix_parser.add_argument('--apply', action='store_true', help='Apply fixes (default is dry run)')
+    
+    # Track number normalizer tool
+    tracknorm_parser = subparsers.add_parser('normalize-tracks', help='Normalize track numbers to Vorbis standards (collection-wide)')
+    tracknorm_parser.add_argument('path', nargs='?', default='output', help='Path to collection or album directory')
+    tracknorm_parser.add_argument('--apply', action='store_true', help='Apply fixes (default is dry run)')
+    
     args = parser.parse_args()
     
     if not args.command:
@@ -159,6 +169,8 @@ def main():
         'fix-single': script_root / 'src' / 'tools' / 'single_metadata_updater.py',
         'test-choice': script_root / 'src' / 'tools' / 'test_artist_choice.py',
         'analyze-dates': script_root / 'src' / 'tools' / 'date_analyzer.py',
+        'fix-multidisc': script_root / 'src' / 'tools' / 'multi_disc_fixer.py',
+        'normalize-tracks': script_root / 'src' / 'tools' / 'track_normalizer.py',
     }
     
     if args.command not in command_map:
@@ -208,6 +220,16 @@ def main():
             script_args.extend(['--export', args.export])
         if args.show_all:
             script_args.append('--show-all')
+    
+    elif args.command == 'fix-multidisc':
+        script_args.append(args.album_path)
+        if args.apply:
+            script_args.append('--apply')
+    
+    elif args.command == 'normalize-tracks':
+        script_args.append(args.path)
+        if args.apply:
+            script_args.append('--apply')
     
     # Run the target script
     print(f"🎵 Running: {script_path.name}")

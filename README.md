@@ -177,6 +177,29 @@ Analyze and fix date metadata inconsistencies across the collection. Ensures com
 - Replacing deprecated YEAR fields with proper DATE fields
 - Reporting collection-wide date format distribution
 
+#### `fix-multidisc` - Multi-disc album metadata correction
+```bash
+python3 cd_manager.py fix-multidisc "output/Artist/Album"     # Analyze multi-disc issues
+python3 cd_manager.py fix-multidisc "output/Artist/Album" --apply # Fix multi-disc metadata
+```
+Fixes DISCNUMBER and TRACKNUMBER metadata for multi-disc albums where file names follow the `X-YY Track Name.flac` pattern:
+- Sets correct DISCNUMBER field for each disc (1, 2, etc.)
+- Normalizes TRACKNUMBER field (removes disc prefix like "01-03" → "03")
+- Updates TOTALDISCS field if needed
+- Handles albums like "Yellow & Green" with separate disc themes
+
+#### `normalize-tracks` - Collection-wide track number standardization
+```bash
+python3 cd_manager.py normalize-tracks                       # Analyze entire collection
+python3 cd_manager.py normalize-tracks --apply               # Fix entire collection
+python3 cd_manager.py normalize-tracks "output/Artist/Album" --apply # Fix single album
+```
+Normalizes TRACKNUMBER format across the entire collection to comply with FLAC Vorbis comment standards:
+- Converts disc-track format (`01-03`) to simple format (`03`)
+- Sets proper DISCNUMBER field for all albums
+- Maintains compatibility with music players and library tools
+- **Essential for existing collections** - fixes legacy format issues from earlier rip processes
+
 #### `fix-single` - Fix single metadata
 ```bash
 python3 cd_manager.py fix-single "output/Artist/Single Name"

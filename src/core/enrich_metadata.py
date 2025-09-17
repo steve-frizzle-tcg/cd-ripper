@@ -29,7 +29,7 @@ class MetadataStandard:
         'ALBUMARTIST',     # Album artist (Various Artists for compilations)
         'ARTIST',          # Track artist
         'TITLE',           # Track title
-        'TRACKNUMBER',     # Track number (disc-track format: 01-05)
+        'TRACKNUMBER',     # Track number (simple format: 05)
         'DATE',            # Release date (year or full date)
     }
     

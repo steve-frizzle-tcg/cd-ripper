@@ -907,11 +907,11 @@ class CDRipper:
                     if metadata.get('album_artist'):
                         audio['ALBUMARTIST'] = metadata['album_artist']
                     
-                    # Enhanced track numbering with disc information
+                    # Enhanced track numbering with proper Vorbis comment format
                     if i < len(tracks) and 'disc_number' in tracks[i]:
                         disc_num = tracks[i]['disc_number']
                         track_num = tracks[i]['track_number']
-                        audio['TRACKNUMBER'] = f"{disc_num:02d}-{track_num:02d}"
+                        audio['TRACKNUMBER'] = f"{track_num:02d}"  # Simple track number (Vorbis standard)
                         audio['DISCNUMBER'] = str(disc_num)
                         audio['TOTALDISCS'] = str(metadata.get('disc_count', 1))
                         audio['TITLE'] = tracks[i]['title']
@@ -923,7 +923,7 @@ class CDRipper:
                             audio['ARTIST'] = metadata['artist']
                     else:
                         # Fallback for single disc or unknown structure
-                        audio['TRACKNUMBER'] = f"01-{i+1:02d}"
+                        audio['TRACKNUMBER'] = f"{i+1:02d}"  # Simple track number (Vorbis standard)
                         audio['DISCNUMBER'] = "1"
                         audio['TOTALDISCS'] = "1"
                         audio['ARTIST'] = metadata['artist']
@@ -970,10 +970,10 @@ class CDRipper:
                 try:
                     audio = FLAC(str(flac_path))
                     
-                    # Basic metadata with disc-track format
+                    # Basic metadata with proper Vorbis comment format
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
-                    audio['TRACKNUMBER'] = f"{disc_number:02d}-{i:02d}"
+                    audio['TRACKNUMBER'] = f"{i:02d}"  # Simple track number (Vorbis standard)
                     audio['DISCNUMBER'] = str(disc_number)
                     audio['TOTALDISCS'] = "1"  # Will be updated if multi-disc detected
                     audio['TOTALTRACKS'] = str(total_tracks)

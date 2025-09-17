@@ -2,21 +2,28 @@
 
 Specialized tools for handling edge cases and specific collection management tasks.
 
-## Tools
+## Available Tools
 
-### `single_metadata_updater.py` - Singles Metadata Fixer
-Fix singles and EPs with generic metadata by applying proper track information.
+### `date_analyzer.py` - Date metadata analysis and standardization
+```bash
+python3 cd_manager.py analyze-dates                    # Analyze collection
+python3 cd_manager.py analyze-dates --apply            # Fix date issues
+python3 cd_manager.py analyze-dates --export dates.json # Export analysis
+```
+Comprehensive date metadata analysis and correction tool that ensures FLAC Vorbis comment compliance.
 
-**Usage:**
+### `multi_disc_fixer.py` - Multi-disc album metadata correction
+```bash
+python3 cd_manager.py fix-multidisc "output/Artist/Album"        # Analyze issues
+python3 cd_manager.py fix-multidisc "output/Artist/Album" --apply # Apply fixes
+```
+Fixes DISCNUMBER and TRACKNUMBER metadata for multi-disc albums with X-YY filename patterns.
+
+### `single_metadata_updater.py` - Single track metadata editor
 ```bash
 python3 cd_manager.py fix-single "output/Artist/Single Name"
 ```
-
-**Features:**
-- Designed for singles with generic Track_01.flac naming
-- Uses Discogs API to find proper track listings
-- Updates both filenames and metadata comprehensively
-- Handles various single formats (CD singles, maxi-singles, etc.)
+Fix singles with generic metadata using specialized tools.
 
 **Example Case:** Annie Lennox Walking On Broken Glass single
 - Before: Track_01.flac, Track_02.flac (generic names)
