@@ -118,6 +118,13 @@ def main():
     
     test_parser = subparsers.add_parser('test-choice', help='Test artist choice')
     
+    # Date analyzer tool
+    date_parser = subparsers.add_parser('analyze-dates', help='Analyze and fix date metadata consistency')
+    date_parser.add_argument('output_dir', nargs='?', default='output', help='Output directory to analyze')
+    date_parser.add_argument('--apply', action='store_true', help='Apply fixes (default is dry run)')
+    date_parser.add_argument('--export', help='Export analysis to JSON file')
+    date_parser.add_argument('--show-all', action='store_true', help='Show all albums, not just problematic ones')
+    
     args = parser.parse_args()
     
     if not args.command:
@@ -151,6 +158,7 @@ def main():
         # Specialized Tools
         'fix-single': script_root / 'src' / 'tools' / 'single_metadata_updater.py',
         'test-choice': script_root / 'src' / 'tools' / 'test_artist_choice.py',
+        'analyze-dates': script_root / 'src' / 'tools' / 'date_analyzer.py',
     }
     
     if args.command not in command_map:
@@ -191,6 +199,15 @@ def main():
     
     elif args.command == 'fix-single':
         script_args.append(args.album_path)
+    
+    elif args.command == 'analyze-dates':
+        script_args.append(args.output_dir)
+        if args.apply:
+            script_args.append('--apply')
+        if args.export:
+            script_args.extend(['--export', args.export])
+        if args.show_all:
+            script_args.append('--show-all')
     
     # Run the target script
     print(f"🎵 Running: {script_path.name}")

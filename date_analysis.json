@@ -1,0 +1,5490 @@
+{
+  "statistics": {
+    "total_albums": 316,
+    "total_tracks": 3839,
+    "date_formats": {
+      "year_only": 299,
+      "full_iso": 13,
+      "missing": 3
+    },
+    "missing_dates": 1,
+    "unknown_dates": 3,
+    "invalid_formats": 0,
+    "inconsistent_albums": [],
+    "date_field_usage": {
+      "DATE": 3829,
+      "ORIGINALDATE": 308
+    },
+    "problematic_albums": [
+      {
+        "artist": "The Drifters",
+        "album": "Golden Hits",
+        "path": "output/The Drifters/Golden Hits",
+        "track_count": 10,
+        "date_fields": {},
+        "date_consistency": "unknown",
+        "issues": [
+          "No DATE or YEAR field found"
+        ],
+        "recommendations": [
+          "Add DATE field with release date"
+        ]
+      }
+    ]
+  },
+  "albums": [
+    {
+      "artist": "Squirrel Nut Zippers",
+      "album": "Hot",
+      "path": "output/Squirrel Nut Zippers/Hot",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "The Lion King",
+      "path": "output/Soundtracks/The Lion King",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Team America- World Police",
+      "path": "output/Soundtracks/Team America- World Police",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Dumb and Dumber- Original Motion Picture Soundtrack",
+      "path": "output/Soundtracks/Dumb and Dumber- Original Motion Picture Soundtrack",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "The Mask- Music From the Motion Picture",
+      "path": "output/Soundtracks/The Mask- Music From the Motion Picture",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Higher Learning: Music From the Motion Picture",
+      "path": "output/Soundtracks/Higher Learning: Music From the Motion Picture",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1995-01-03"
+        ],
+        "ORIGINALDATE": [
+          "1995-01-03"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995-01-03",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Batman Forever- Original Music From the Motion Picture",
+      "path": "output/Soundtracks/Batman Forever- Original Music From the Motion Picture",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Titan A.E",
+      "path": "output/Soundtracks/Titan A.E",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "Def Jam\u2019s Rush Hour Soundtrack",
+      "path": "output/Soundtracks/Def Jam\u2019s Rush Hour Soundtrack",
+      "track_count": 25,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundtracks",
+      "album": "William Shakespeare\u2019s Romeo + Juliet- Music From the Motion Picture",
+      "path": "output/Soundtracks/William Shakespeare\u2019s Romeo + Juliet- Music From the Motion Picture",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Gnarls Barkley",
+      "album": "St. Elsewhere",
+      "path": "output/Gnarls Barkley/St. Elsewhere",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Gnarls Barkley",
+      "album": "The Odd Couple",
+      "path": "output/Gnarls Barkley/The Odd Couple",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2008"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2008",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Bungle",
+      "album": "Disco Volante",
+      "path": "output/Mr. Bungle/Disco Volante",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Bungle",
+      "album": "Mr. Bungle",
+      "path": "output/Mr. Bungle/Mr. Bungle",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Bungle",
+      "album": "The Night They Came Home",
+      "path": "output/Mr. Bungle/The Night They Came Home",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2021"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2021",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Bungle",
+      "album": "The Raging Wrath Of The Easter Bunny Demo",
+      "path": "output/Mr. Bungle/The Raging Wrath Of The Easter Bunny Demo",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2020"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2020",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Bungle",
+      "album": "California",
+      "path": "output/Mr. Bungle/California",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "D\u00e4lek",
+      "album": "Absence",
+      "path": "output/D\u00e4lek/Absence",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Meat Loaf",
+      "album": "Bat Out of Hell",
+      "path": "output/Meat Loaf/Bat Out of Hell",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1977"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1977",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Muse",
+      "album": "Black Holes and Revelations",
+      "path": "output/Muse/Black Holes and Revelations",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fugees",
+      "album": "The Score",
+      "path": "output/Fugees/The Score",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Tomahawk",
+      "album": "Tomahawk",
+      "path": "output/Tomahawk/Tomahawk",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Tomahawk",
+      "album": "Mit Gas",
+      "path": "output/Tomahawk/Mit Gas",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Crash Test Dummies",
+      "album": "God Shuffled His Feet",
+      "path": "output/Crash Test Dummies/God Shuffled His Feet",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Bohren & der Club of Gore",
+      "album": "Black Earth",
+      "path": "output/Bohren & der Club of Gore/Black Earth",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Neurosis",
+      "album": "Honor Found in Decay",
+      "path": "output/Neurosis/Honor Found in Decay",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "album": "The Battle of Los Angeles",
+      "path": "output/Rage Against the Machine/The Battle of Los Angeles",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "INXS",
+      "album": "X",
+      "path": "output/INXS/X",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "Unknown"
+        ],
+        "ORIGINALDATE": [
+          "1990-09-21"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [
+        "Fix invalid date format: 'Unknown'"
+      ],
+      "primary_date": "Unknown",
+      "date_format": "missing",
+      "date_valid": false
+    },
+    {
+      "artist": "Living Colour",
+      "album": "Time\u2019s Up",
+      "path": "output/Living Colour/Time\u2019s Up",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Living Colour",
+      "album": "Vivid",
+      "path": "output/Living Colour/Vivid",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1988"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1988",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "General Patton vs. The X\u2010Ecutioners",
+      "album": "General Patton vs. The X\u2010Ecutioners",
+      "path": "output/General Patton vs. The X\u2010Ecutioners/General Patton vs. The X\u2010Ecutioners",
+      "track_count": 23,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "OutKast",
+      "album": "ATLiens",
+      "path": "output/OutKast/ATLiens",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Palms",
+      "album": "Palms",
+      "path": "output/Palms/Palms",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "2013"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2013",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Alice in Chains",
+      "album": "MTV Unplugged",
+      "path": "output/Alice in Chains/MTV Unplugged",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Alice in Chains",
+      "album": "Sap",
+      "path": "output/Alice in Chains/Sap",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Alice in Chains",
+      "album": "Jar of Flies",
+      "path": "output/Alice in Chains/Jar of Flies",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "David Bowie",
+      "album": "Changesbowie",
+      "path": "output/David Bowie/Changesbowie",
+      "track_count": 18,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "David Bowie",
+      "album": "\u2605",
+      "path": "output/David Bowie/\u2605",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "2016"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2016",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Bobby Darin & Johnny Mercer",
+      "album": "Two of a Kind",
+      "path": "output/Bobby Darin & Johnny Mercer/Two of a Kind",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "MadLove",
+      "album": "White with Foam",
+      "path": "output/MadLove/White with Foam",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2009"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2009",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Cat Power",
+      "album": "Sun",
+      "path": "output/Cat Power/Sun",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Cat Power",
+      "album": "The Greatest",
+      "path": "output/Cat Power/The Greatest",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Marcy Playground",
+      "album": "Marcy Playground",
+      "path": "output/Marcy Playground/Marcy Playground",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Eurythmics",
+      "album": "Revenge",
+      "path": "output/Eurythmics/Revenge",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1986"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1986",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Stone Roses",
+      "album": "Second Coming",
+      "path": "output/The Stone Roses/Second Coming",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Enya",
+      "album": "Watermark",
+      "path": "output/Enya/Watermark",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1988"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1988",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Enya",
+      "album": "The Memory of Trees",
+      "path": "output/Enya/The Memory of Trees",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Enya",
+      "album": "A Day Without Rain",
+      "path": "output/Enya/A Day Without Rain",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Power Station",
+      "album": "The Power Station",
+      "path": "output/The Power Station/The Power Station",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "1985"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1985",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Band",
+      "album": "Northern Lights \u2013 Southern Cross",
+      "path": "output/The Band/Northern Lights \u2013 Southern Cross",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1975"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1975",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Annie Lenox",
+      "album": "Walking On Broken Glass",
+      "path": "output/Annie Lenox/Walking On Broken Glass",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Basehead",
+      "album": "Play With Toys",
+      "path": "output/Basehead/Play With Toys",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Chris Isaak",
+      "album": "Heart Shaped World",
+      "path": "output/Chris Isaak/Heart Shaped World",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1989"
+        ],
+        "ORIGINALDATE": [
+          "1989-06-06"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1989",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Doors",
+      "album": "The Doors",
+      "path": "output/The Doors/The Doors",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1967"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1967",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Doors",
+      "album": "Morrison Hotel",
+      "path": "output/The Doors/Morrison Hotel",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1970"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1970",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Les Claypool",
+      "album": "Of Whales and Woe",
+      "path": "output/Les Claypool/Of Whales and Woe",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Michael Bolton",
+      "album": "This Is the Time: The Christmas Album",
+      "path": "output/Michael Bolton/This Is the Time: The Christmas Album",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ],
+        "ORIGINALDATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Michael Bolton",
+      "album": "Timeless: The Classics",
+      "path": "output/Michael Bolton/Timeless: The Classics",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1992-09-29"
+        ],
+        "ORIGINALDATE": [
+          "1992-09-29"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992-09-29",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Adam Sandler",
+      "album": "They're All Gonna Laugh at You!",
+      "path": "output/Adam Sandler/They're All Gonna Laugh at You!",
+      "track_count": 22,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Adam Sandler",
+      "album": "Shhh... Don't Tell",
+      "path": "output/Adam Sandler/Shhh... Don't Tell",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Adam Sandler",
+      "album": "What\u2019s Your Name",
+      "path": "output/Adam Sandler/What\u2019s Your Name",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Adam Sandler",
+      "album": "Stan and Judy\u2019s Kid",
+      "path": "output/Adam Sandler/Stan and Judy\u2019s Kid",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Adam Sandler",
+      "album": "What the Hell Happened to Me",
+      "path": "output/Adam Sandler/What the Hell Happened to Me",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Liam Gallagher",
+      "album": "As You Were",
+      "path": "output/Liam Gallagher/As You Were",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2017"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2017",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Toad the Wet Sprocket",
+      "album": "Dulcinea",
+      "path": "output/Toad the Wet Sprocket/Dulcinea",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Various Artists",
+      "album": "ESPN Presents- Jock Jams, Volume 1",
+      "path": "output/Various Artists/ESPN Presents- Jock Jams, Volume 1",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Various Artists",
+      "album": "Verve,,Remixed\u00b3",
+      "path": "output/Various Artists/Verve,,Remixed\u00b3",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Various Artists",
+      "album": "Woodstock 94",
+      "path": "output/Various Artists/Woodstock 94",
+      "track_count": 30,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Various Artists",
+      "album": "No Alternative",
+      "path": "output/Various Artists/No Alternative",
+      "track_count": 19,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Various Artists",
+      "album": "933 WMMR Classics, Volume 2",
+      "path": "output/Various Artists/933 WMMR Classics, Volume 2",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1988"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1988",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Eyes of Flesh Eyes of Flame",
+      "path": "output/Secret Chiefs 3/Eyes of Flesh Eyes of Flame",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Xaphan- Book of Angels, Volume 9",
+      "path": "output/Secret Chiefs 3/Xaphan- Book of Angels, Volume 9",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2008"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2008",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Second Grand Constitution and Bylaws- Hurqalya",
+      "path": "output/Secret Chiefs 3/Second Grand Constitution and Bylaws- Hurqalya",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Book of Souls- Folio A",
+      "path": "output/Secret Chiefs 3/Book of Souls- Folio A",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2013"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2013",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "First Grand Constitution and Bylaws",
+      "path": "output/Secret Chiefs 3/First Grand Constitution and Bylaws",
+      "track_count": 21,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Book of Horizons",
+      "path": "output/Secret Chiefs 3/Book of Horizons",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Satellite Supersonic, Volume 1",
+      "path": "output/Secret Chiefs 3/Satellite Supersonic, Volume 1",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "2010"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2010",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Malkhut- The Book Beri'ah, Volume 10",
+      "path": "output/Secret Chiefs 3/Malkhut- The Book Beri'ah, Volume 10",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2019"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2019",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3",
+      "album": "Book M",
+      "path": "output/Secret Chiefs 3/Book M",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Pink Floyd",
+      "album": "Meddle",
+      "path": "output/Pink Floyd/Meddle",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "1971"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1971",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Coolio",
+      "album": "Gangsta's Paradise",
+      "path": "output/Coolio/Gangsta's Paradise",
+      "track_count": 2,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Filter",
+      "album": "Hey Man Nice Shot",
+      "path": "output/Filter/Hey Man Nice Shot",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Misfits",
+      "album": "Collection I",
+      "path": "output/Misfits/Collection I",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1986"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1986",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sparks",
+      "album": "Sparks",
+      "path": "output/Sparks/Sparks",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1971"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1971",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Soundgarden",
+      "album": "Superunknown",
+      "path": "output/Soundgarden/Superunknown",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Snoop Dogg",
+      "album": "Drop It Like It's Hot",
+      "path": "output/Snoop Dogg/Drop It Like It's Hot",
+      "track_count": 3,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Naughty by Nature",
+      "album": "Poverty's Paradise",
+      "path": "output/Naughty by Nature/Poverty's Paradise",
+      "track_count": 21,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "NxExRxD",
+      "album": "In Search Of\u2026",
+      "path": "output/NxExRxD/In Search Of\u2026",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Suede",
+      "album": "Dog Man Star",
+      "path": "output/Suede/Dog Man Star",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994-10-10"
+        ],
+        "ORIGINALDATE": [
+          "1994-10-10"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994-10-10",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Brian Eno",
+      "album": "Apollo- Atmospheres & Soundtracks",
+      "path": "output/Brian Eno/Apollo- Atmospheres & Soundtracks",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1983"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1983",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mark Lanegan Band",
+      "album": "Blues Funeral",
+      "path": "output/Mark Lanegan Band/Blues Funeral",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sting",
+      "album": "...Nothing Like the Sun",
+      "path": "output/Sting/...Nothing Like the Sun",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1987"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1987",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Squeeze",
+      "album": "Singles- 45\u2019s and Under",
+      "path": "output/Squeeze/Singles- 45\u2019s and Under",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1982"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1982",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Ghostface Killah & Adrian Younge",
+      "album": "Twelve Reasons to Die",
+      "path": "output/Ghostface Killah & Adrian Younge/Twelve Reasons to Die",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2013"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2013",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fant\u00f4mas",
+      "album": "Del\u00ecrium C\u00f2rdia",
+      "path": "output/Fant\u00f4mas/Del\u00ecrium C\u00f2rdia",
+      "track_count": 1,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fant\u00f4mas",
+      "album": "Fant\u00f4mas",
+      "path": "output/Fant\u00f4mas/Fant\u00f4mas",
+      "track_count": 30,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fant\u00f4mas",
+      "album": "The Director\u2019s Cut",
+      "path": "output/Fant\u00f4mas/The Director\u2019s Cut",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fant\u00f4mas",
+      "album": "Suspended Animation",
+      "path": "output/Fant\u00f4mas/Suspended Animation",
+      "track_count": 30,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Fozzy",
+      "album": "Fozzy",
+      "path": "output/Fozzy/Fozzy",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Ben Goldberg, John Schott, Trevor Dunn & Kenny Wollesen",
+      "album": "Junk Genius",
+      "path": "output/Ben Goldberg, John Schott, Trevor Dunn & Kenny Wollesen/Junk Genius",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sade",
+      "album": "Diamond Life",
+      "path": "output/Sade/Diamond Life",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1984"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1984",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sade",
+      "album": "Promise",
+      "path": "output/Sade/Promise",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1985"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1985",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Michael McDonald",
+      "album": "Motown",
+      "path": "output/Michael McDonald/Motown",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ],
+        "ORIGINALDATE": [
+          "2003-06-24"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Santana",
+      "album": "Santana",
+      "path": "output/Santana/Santana",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "2014"
+        ],
+        "ORIGINALDATE": [
+          "1969-08-30"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2014",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Radiohead",
+      "album": "Airbag , How Am I Driving",
+      "path": "output/Radiohead/Airbag , How Am I Driving",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Radiohead",
+      "album": "Kid A",
+      "path": "output/Radiohead/Kid A",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Radiohead",
+      "album": "Hail to the Thief",
+      "path": "output/Radiohead/Hail to the Thief",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Jamiroquai",
+      "album": "The Return of the Space Cowboy",
+      "path": "output/Jamiroquai/The Return of the Space Cowboy",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Jamiroquai",
+      "album": "Travelling Without Moving",
+      "path": "output/Jamiroquai/Travelling Without Moving",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Verve",
+      "album": "Urban Hymns",
+      "path": "output/The Verve/Urban Hymns",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Cherry Poppin\u2019 Daddies",
+      "album": "Zoot Suit Riot",
+      "path": "output/Cherry Poppin\u2019 Daddies/Zoot Suit Riot",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Grotus",
+      "album": "Mass",
+      "path": "output/Grotus/Mass",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Rahzel",
+      "album": "Make the Music 2000",
+      "path": "output/Rahzel/Make the Music 2000",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Rush",
+      "album": "Moving Pictures",
+      "path": "output/Rush/Moving Pictures",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1981"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1981",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Rush",
+      "album": "Grace Under Pressure",
+      "path": "output/Rush/Grace Under Pressure",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "1984"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1984",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Pearl Jam",
+      "album": "Vs",
+      "path": "output/Pearl Jam/Vs",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Pearl Jam",
+      "album": "Vitalogy",
+      "path": "output/Pearl Jam/Vitalogy",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1994-11-22"
+        ],
+        "ORIGINALDATE": [
+          "1994-11-22"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994-11-22",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Elton John",
+      "album": "Greatest Hits",
+      "path": "output/Elton John/Greatest Hits",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1984"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1984",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Elton John",
+      "album": "Believe (Single)",
+      "path": "output/Elton John/Believe (Single)",
+      "track_count": 3,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Usher",
+      "album": "You Make Me Wanna... (Remix)",
+      "path": "output/Usher/You Make Me Wanna... (Remix)",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Talk Show",
+      "album": "Talk Show",
+      "path": "output/Talk Show/Talk Show",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Gorillaz",
+      "album": "Gorillaz",
+      "path": "output/Gorillaz/Gorillaz",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Swans",
+      "album": "To Be Kind",
+      "path": "output/Swans/To Be Kind",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2014"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2014",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Brian Setzer Orchestra",
+      "album": "Vavoom!",
+      "path": "output/The Brian Setzer Orchestra/Vavoom!",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Brian Setzer Orchestra",
+      "album": "The Dirty Boogie",
+      "path": "output/The Brian Setzer Orchestra/The Dirty Boogie",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "R.E.M",
+      "album": "Green",
+      "path": "output/R.E.M/Green",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1988"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1988",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "R.E.M",
+      "album": "Murmur",
+      "path": "output/R.E.M/Murmur",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1983"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1983",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "R.E.M",
+      "album": "Monster",
+      "path": "output/R.E.M/Monster",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "R.E.M",
+      "album": "Automatic for the People",
+      "path": "output/R.E.M/Automatic for the People",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "R.E.M",
+      "album": "Out of Time",
+      "path": "output/R.E.M/Out of Time",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dr. Octagon",
+      "album": "Dr. Octagonecologyst",
+      "path": "output/Dr. Octagon/Dr. Octagonecologyst",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Lionel Richie",
+      "album": "Back to Front",
+      "path": "output/Lionel Richie/Back to Front",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ],
+        "ORIGINALDATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "KT Tunstall",
+      "album": "Eye to the Telescope",
+      "path": "output/KT Tunstall/Eye to the Telescope",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "KT Tunstall",
+      "album": "Drastic Fantastic",
+      "path": "output/KT Tunstall/Drastic Fantastic",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2007"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2007",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Pavement",
+      "album": "Brighten the Corners",
+      "path": "output/Pavement/Brighten the Corners",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Tchaikovsky",
+      "album": "The Very Best of Tchaikovsky",
+      "path": "output/Tchaikovsky/The Very Best of Tchaikovsky",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ],
+        "ORIGINALDATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Bloodhound Gang",
+      "album": "Mama Say",
+      "path": "output/Bloodhound Gang/Mama Say",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Spacemonkeyz vs. Gorillaz",
+      "album": "Laika Come Home",
+      "path": "output/Spacemonkeyz vs. Gorillaz/Laika Come Home",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dion",
+      "album": "The Essential Dion",
+      "path": "output/Dion/The Essential Dion",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Frank Sinatra",
+      "album": "Duets II",
+      "path": "output/Frank Sinatra/Duets II",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1995-01-05"
+        ],
+        "ORIGINALDATE": [
+          "1994-11-07"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995-01-05",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Buddy Holly",
+      "album": "From the Original Master Tapes",
+      "path": "output/Buddy Holly/From the Original Master Tapes",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1985"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1985",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Franz Ferdinand",
+      "album": "Franz Ferdinand",
+      "path": "output/Franz Ferdinand/Franz Ferdinand",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Queens of the Stone Age",
+      "album": "Lullabies to Paralyze",
+      "path": "output/Queens of the Stone Age/Lullabies to Paralyze",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Queens of the Stone Age",
+      "album": "In Times New Roman\u2026",
+      "path": "output/Queens of the Stone Age/In Times New Roman\u2026",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2023"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2023",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Queens of the Stone Age",
+      "album": "\u2026Like Clockwork",
+      "path": "output/Queens of the Stone Age/\u2026Like Clockwork",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2013"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2013",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Third Eye Blind",
+      "album": "Third Eye Blind",
+      "path": "output/Third Eye Blind/Third Eye Blind",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Kaada",
+      "album": "Music for Moviebikers",
+      "path": "output/Kaada/Music for Moviebikers",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Kaada",
+      "album": "Thank You for Giving Me Your Valuable Time",
+      "path": "output/Kaada/Thank You for Giving Me Your Valuable Time",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Jaco Pastorius",
+      "album": "Jaco Pastorius",
+      "path": "output/Jaco Pastorius/Jaco Pastorius",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1976"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1976",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Isis",
+      "album": "Temporal",
+      "path": "output/Isis/Temporal",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Isis",
+      "album": "Celestial",
+      "path": "output/Isis/Celestial",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Hole",
+      "album": "Celebrity Skin",
+      "path": "output/Hole/Celebrity Skin",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1998-09-08"
+        ],
+        "ORIGINALDATE": [
+          "1998-09-02"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998-09-08",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "ZZ Top",
+      "album": "Greatest Hits",
+      "path": "output/ZZ Top/Greatest Hits",
+      "track_count": 18,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ],
+        "ORIGINALDATE": [
+          "1992-04-14"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "De La Soul",
+      "album": "3 Feet High and Rising",
+      "path": "output/De La Soul/3 Feet High and Rising",
+      "track_count": 24,
+      "date_fields": {
+        "DATE": [
+          "1989"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1989",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "The Bedlam in Goliath",
+      "path": "output/The Mars Volta/The Bedlam in Goliath",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2008"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2008",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "Amputechture",
+      "path": "output/The Mars Volta/Amputechture",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "The Mars Volta",
+      "path": "output/The Mars Volta/The Mars Volta",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2022"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2022",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "De\u2010Loused in the Comatorium",
+      "path": "output/The Mars Volta/De\u2010Loused in the Comatorium",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "Frances the Mute",
+      "path": "output/The Mars Volta/Frances the Mute",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mars Volta",
+      "album": "Octahedron",
+      "path": "output/The Mars Volta/Octahedron",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "2009"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2009",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Blue Meanies",
+      "album": "A Sonic Documentation of Exhibition and Banter",
+      "path": "output/Blue Meanies/A Sonic Documentation of Exhibition and Banter",
+      "track_count": 21,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Duran Duran",
+      "album": "Duran Duran (The Wedding Album)",
+      "path": "output/Duran Duran/Duran Duran (The Wedding Album)",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Duran Duran",
+      "album": "Seven and the Ragged Tiger",
+      "path": "output/Duran Duran/Seven and the Ragged Tiger",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Painkiller",
+      "album": "50th Birthday Celebration, Volume 12",
+      "path": "output/Painkiller/50th Birthday Celebration, Volume 12",
+      "track_count": 3,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Flat Earth Society",
+      "album": "Psychoscout",
+      "path": "output/Flat Earth Society/Psychoscout",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Flat Earth Society",
+      "album": "Isms",
+      "path": "output/Flat Earth Society/Isms",
+      "track_count": 19,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Theory of Ruin",
+      "album": "Front Line Poster Child",
+      "path": "output/Theory of Ruin/Front Line Poster Child",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Theory of Ruin",
+      "album": "Counter-Culture Nosebleed",
+      "path": "output/Theory of Ruin/Counter-Culture Nosebleed",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Cheap Trick",
+      "album": "Cheap Trick",
+      "path": "output/Cheap Trick/Cheap Trick",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1998-09-29"
+        ],
+        "ORIGINALDATE": [
+          "1977"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998-09-29",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "The Clash",
+      "album": "The Clash",
+      "path": "output/The Clash/The Clash",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1977"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1977",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mike Patton",
+      "album": "Pranzo Oltranzista",
+      "path": "output/Mike Patton/Pranzo Oltranzista",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mike Patton",
+      "album": "Adult Themes for Voice",
+      "path": "output/Mike Patton/Adult Themes for Voice",
+      "track_count": 34,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Garbage",
+      "album": "Bleed Like Me",
+      "path": "output/Garbage/Bleed Like Me",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2005-04-10"
+        ],
+        "ORIGINALDATE": [
+          "2005-04-10"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005-04-10",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Nirvana",
+      "album": "In Utero",
+      "path": "output/Nirvana/In Utero",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Peter Gabriel",
+      "album": "So",
+      "path": "output/Peter Gabriel/So",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1986"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1986",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Peter Gabriel",
+      "album": "Us",
+      "path": "output/Peter Gabriel/Us",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Peter Gabriel",
+      "album": "Passion- Music for the Last Temptation of Christ",
+      "path": "output/Peter Gabriel/Passion- Music for the Last Temptation of Christ",
+      "track_count": 21,
+      "date_fields": {
+        "DATE": [
+          "1989"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1989",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Genesis",
+      "album": "Live \u2013 The Way We Walk, Volume One: The Shorts",
+      "path": "output/Genesis/Live \u2013 The Way We Walk, Volume One: The Shorts",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2006-04-03"
+        ],
+        "ORIGINALDATE": [
+          "1992-11-09"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006-04-03",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Genesis",
+      "album": "Genesis",
+      "path": "output/Genesis/Genesis",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1983"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1983",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Supertramp",
+      "album": "Crime of the Century",
+      "path": "output/Supertramp/Crime of the Century",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "1974"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1974",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Supertramp",
+      "album": "The Very Best Of Supertramp",
+      "path": "output/Supertramp/The Very Best Of Supertramp",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Faith No More",
+      "album": "Sol Invictus",
+      "path": "output/Faith No More/Sol Invictus",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2015"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2015",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Faith No More",
+      "album": "Album of the Year",
+      "path": "output/Faith No More/Album of the Year",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Faith No More",
+      "album": "Angel Dust",
+      "path": "output/Faith No More/Angel Dust",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Faith No More",
+      "album": "Easy",
+      "path": "output/Faith No More/Easy",
+      "track_count": 4,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Faith No More",
+      "album": "The Real Thing",
+      "path": "output/Faith No More/The Real Thing",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1989"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1989",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Lovage",
+      "album": "Music to Make Love to Your Old Lady By",
+      "path": "output/Lovage/Music to Make Love to Your Old Lady By",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Solomon Burke",
+      "album": "The Best of Solomon Burke",
+      "path": "output/Solomon Burke/The Best of Solomon Burke",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1989"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1989",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Polkadot Cadaver",
+      "album": "Last Call In Jonestown",
+      "path": "output/Polkadot Cadaver/Last Call In Jonestown",
+      "track_count": 4,
+      "date_fields": {
+        "DATE": [
+          "2013"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2013",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Big Bad Voodoo Daddy",
+      "album": "Big Bad Voodoo Daddy",
+      "path": "output/Big Bad Voodoo Daddy/Big Bad Voodoo Daddy",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Herbie Hancock",
+      "album": "Head Hunters",
+      "path": "output/Herbie Hancock/Head Hunters",
+      "track_count": 4,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Slayer",
+      "album": "Show No Mercy",
+      "path": "output/Slayer/Show No Mercy",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1983"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1983",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Cranberries",
+      "album": "No Need to Argue",
+      "path": "output/The Cranberries/No Need to Argue",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Cranberries",
+      "album": "Everybody Else Is Doing It, So Why Can\u2019t We",
+      "path": "output/The Cranberries/Everybody Else Is Doing It, So Why Can\u2019t We",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dub Trio",
+      "album": "New Heavy",
+      "path": "output/Dub Trio/New Heavy",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Nine Inch Nails",
+      "album": "Year Zero",
+      "path": "output/Nine Inch Nails/Year Zero",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "2007"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2007",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Talking Heads",
+      "album": "Fear of Music",
+      "path": "output/Talking Heads/Fear of Music",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1979"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1979",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Kenny Loggins",
+      "album": "More Songs From Pooh Corner",
+      "path": "output/Kenny Loggins/More Songs From Pooh Corner",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mazzy Star",
+      "album": "She Hangs Brightly",
+      "path": "output/Mazzy Star/She Hangs Brightly",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Children of Bodom",
+      "album": "Hatebreeder",
+      "path": "output/Children of Bodom/Hatebreeder",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3- Ishraqiyun",
+      "album": "Perichoresis",
+      "path": "output/Secret Chiefs 3- Ishraqiyun/Perichoresis",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "2014"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2014",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Beach Boys",
+      "album": "Merry Christmas from the Beach Boys",
+      "path": "output/The Beach Boys/Merry Christmas from the Beach Boys",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1997-07-01"
+        ],
+        "ORIGINALDATE": [
+          "1995-09-01"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997-07-01",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Stevie Ray Vaughan and Double Trouble",
+      "album": "The Essential Stevie Ray Vaughan and Double Trouble",
+      "path": "output/Stevie Ray Vaughan and Double Trouble/The Essential Stevie Ray Vaughan and Double Trouble",
+      "track_count": 33,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Eric Clapton",
+      "album": "Timepieces- The Best of Eric Clapton",
+      "path": "output/Eric Clapton/Timepieces- The Best of Eric Clapton",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1982"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1982",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Eric Clapton",
+      "album": "Unplugged",
+      "path": "output/Eric Clapton/Unplugged",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Pulp",
+      "album": "Different Class",
+      "path": "output/Pulp/Different Class",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Imperial Teen",
+      "album": "Live at Maxwell's",
+      "path": "output/Imperial Teen/Live at Maxwell's",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sarah McLachlan",
+      "album": "Surfacing",
+      "path": "output/Sarah McLachlan/Surfacing",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sarah McLachlan",
+      "album": "Mirrorball",
+      "path": "output/Sarah McLachlan/Mirrorball",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Primus",
+      "album": "Pork Soda",
+      "path": "output/Primus/Pork Soda",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1993"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1993",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Primus",
+      "album": "Conspiranoid",
+      "path": "output/Primus/Conspiranoid",
+      "track_count": 3,
+      "date_fields": {
+        "DATE": [
+          "2022"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2022",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Primus",
+      "album": "Antipop",
+      "path": "output/Primus/Antipop",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Primus",
+      "album": "The Desaturating Seven",
+      "path": "output/Primus/The Desaturating Seven",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "2017"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2017",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Primus",
+      "album": "Sailing the Seas of Cheese",
+      "path": "output/Primus/Sailing the Seas of Cheese",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Marvin Gaye",
+      "album": "Marvin Gaye's Greatest Hits",
+      "path": "output/Marvin Gaye/Marvin Gaye's Greatest Hits",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1987"
+        ],
+        "ORIGINALDATE": [
+          "1976"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1987",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "George Thorogood & the Destroyers",
+      "album": "Live",
+      "path": "output/George Thorogood & the Destroyers/Live",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1986"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1986",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Blur",
+      "album": "The Ballad of Darren",
+      "path": "output/Blur/The Ballad of Darren",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2023"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2023",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Blur",
+      "album": "The Magic Whip",
+      "path": "output/Blur/The Magic Whip",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2015-04-28"
+        ],
+        "ORIGINALDATE": [
+          "2015-04-24"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2015-04-28",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Blur",
+      "album": "The Great Escape",
+      "path": "output/Blur/The Great Escape",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Blur",
+      "album": "Song 2",
+      "path": "output/Blur/Song 2",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Blur",
+      "album": "Blur",
+      "path": "output/Blur/Blur",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Willie Nelson",
+      "album": "Half Nelson",
+      "path": "output/Willie Nelson/Half Nelson",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "Unknown"
+        ],
+        "ORIGINALDATE": [
+          "1985"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [
+        "Fix invalid date format: 'Unknown'"
+      ],
+      "primary_date": "Unknown",
+      "date_format": "missing",
+      "date_valid": false
+    },
+    {
+      "artist": "Jane\u2019s Addiction",
+      "album": "Ritual de lo habitual",
+      "path": "output/Jane\u2019s Addiction/Ritual de lo habitual",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Heavy D. & the Boyz",
+      "album": "Blue Funk",
+      "path": "output/Heavy D. & the Boyz/Blue Funk",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Peeping Tom",
+      "album": "Peeping Tom",
+      "path": "output/Peeping Tom/Peeping Tom",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Melvins",
+      "album": "Houdini Live 2005- A Live History of Gluttony and Lust",
+      "path": "output/Melvins/Houdini Live 2005- A Live History of Gluttony and Lust",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Melvins",
+      "album": "Tarantula Heart",
+      "path": "output/Melvins/Tarantula Heart",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "2024"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2024",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Melvins",
+      "album": "Bar-X-The Rocking M",
+      "path": "output/Melvins/Bar-X-The Rocking M",
+      "track_count": 1,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Ima Robot",
+      "album": "Ima Robot",
+      "path": "output/Ima Robot/Ima Robot",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Spain",
+      "album": "The Blue Moods of Spain",
+      "path": "output/Spain/The Blue Moods of Spain",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Stone Temple Pilots",
+      "album": "Tiny Music\u2026 Songs From the Vatican Gift Shop",
+      "path": "output/Stone Temple Pilots/Tiny Music\u2026 Songs From the Vatican Gift Shop",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Stone Temple Pilots",
+      "album": "Shangri\u2010La Dee Da",
+      "path": "output/Stone Temple Pilots/Shangri\u2010La Dee Da",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Stone Temple Pilots",
+      "album": "Purple",
+      "path": "output/Stone Temple Pilots/Purple",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Stone Temple Pilots",
+      "album": "Core",
+      "path": "output/Stone Temple Pilots/Core",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sleepytime Gorilla Museum",
+      "album": "Of Natural History",
+      "path": "output/Sleepytime Gorilla Museum/Of Natural History",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sleepytime Gorilla Museum",
+      "album": "Grand Opening and Closing!",
+      "path": "output/Sleepytime Gorilla Museum/Grand Opening and Closing!",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sublime",
+      "album": "Greatest Hits",
+      "path": "output/Sublime/Greatest Hits",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sublime",
+      "album": "40 oz. to Freedom",
+      "path": "output/Sublime/40 oz. to Freedom",
+      "track_count": 22,
+      "date_fields": {
+        "DATE": [
+          "1992"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1992",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Sublime",
+      "album": "Sublime",
+      "path": "output/Sublime/Sublime",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Desert Sessions",
+      "album": "11 & 12",
+      "path": "output/Desert Sessions/11 & 12",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "2019"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2019",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Men at Work",
+      "album": "Business as Usual",
+      "path": "output/Men at Work/Business as Usual",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1981"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1981",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "311",
+      "album": "Omaha Sessions",
+      "path": "output/311/Omaha Sessions",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Doobie Brothers",
+      "album": "Minute By Minute",
+      "path": "output/The Doobie Brothers/Minute By Minute",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ],
+        "ORIGINALDATE": [
+          "1978-12-07"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Bj\u00f6rk",
+      "album": "Post",
+      "path": "output/Bj\u00f6rk/Post",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dog Fashion Disco",
+      "album": "Sweet Nothings",
+      "path": "output/Dog Fashion Disco/Sweet Nothings",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2014"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2014",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dog Fashion Disco",
+      "album": "The City Is Alive Tonight",
+      "path": "output/Dog Fashion Disco/The City Is Alive Tonight",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dog Fashion Disco",
+      "album": "Anarchists of Good Taste",
+      "path": "output/Dog Fashion Disco/Anarchists of Good Taste",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Luther Vandross",
+      "album": "The Ultimate Luther Vandross",
+      "path": "output/Luther Vandross/The Ultimate Luther Vandross",
+      "track_count": 18,
+      "date_fields": {
+        "DATE": [
+          "2006-10-07"
+        ],
+        "ORIGINALDATE": [
+          "2006-08-21"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006-10-07",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "Barenaked Ladies",
+      "album": "Stunt",
+      "path": "output/Barenaked Ladies/Stunt",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dean Martin",
+      "album": "All-Time Greatest Hits",
+      "path": "output/Dean Martin/All-Time Greatest Hits",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1990-11-27"
+        ],
+        "ORIGINALDATE": [
+          "1990-11-27"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990-11-27",
+      "date_format": "full_iso",
+      "date_valid": true
+    },
+    {
+      "artist": "The Dillinger Escape Plan with Mike Patton",
+      "album": "Irony Is a Dead Scene",
+      "path": "output/The Dillinger Escape Plan with Mike Patton/Irony Is a Dead Scene",
+      "track_count": 4,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "John Zorn",
+      "album": "Moonchild- Songs Without Words",
+      "path": "output/John Zorn/Moonchild- Songs Without Words",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "John Zorn",
+      "album": "The Gift",
+      "path": "output/John Zorn/The Gift",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "John Zorn",
+      "album": "First Recordings 1973",
+      "path": "output/John Zorn/First Recordings 1973",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Smash Mouth",
+      "album": "Fush Yu Mang",
+      "path": "output/Smash Mouth/Fush Yu Mang",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Billy Joel",
+      "album": "52nd Street",
+      "path": "output/Billy Joel/52nd Street",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1978"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1978",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mr. Big",
+      "album": "Lean Into It",
+      "path": "output/Mr. Big/Lean Into It",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Them Crooked Vultures",
+      "album": "Them Crooked Vultures",
+      "path": "output/Them Crooked Vultures/Them Crooked Vultures",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2009"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2009",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Ween",
+      "album": "White Pepper",
+      "path": "output/Ween/White Pepper",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2000"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2000",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Ween",
+      "album": "Chocolate and Cheese",
+      "path": "output/Ween/Chocolate and Cheese",
+      "track_count": 16,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "album": "Californication",
+      "path": "output/Red Hot Chili Peppers/Californication",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "album": "Blood Sugar Sex Magik",
+      "path": "output/Red Hot Chili Peppers/Blood Sugar Sex Magik",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "album": "One Hot Minute",
+      "path": "output/Red Hot Chili Peppers/One Hot Minute",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Seatbelts",
+      "album": "Cowboy Bebop- Blue",
+      "path": "output/The Seatbelts/Cowboy Bebop- Blue",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Seatbelts",
+      "album": "Cowboy Bebop- No Disc",
+      "path": "output/The Seatbelts/Cowboy Bebop- No Disc",
+      "track_count": 18,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Seatbelts",
+      "album": "Cowboy Bebop OST",
+      "path": "output/The Seatbelts/Cowboy Bebop OST",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Guero",
+      "path": "output/Beck/Guero",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Odelay",
+      "path": "output/Beck/Odelay",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Mutations",
+      "path": "output/Beck/Mutations",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1998"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1998",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Midnite Vultures",
+      "path": "output/Beck/Midnite Vultures",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Sea Change",
+      "path": "output/Beck/Sea Change",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Beck",
+      "album": "Devils Haircut",
+      "path": "output/Beck/Devils Haircut",
+      "track_count": 1,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Yes",
+      "album": "Close to the Edge",
+      "path": "output/Yes/Close to the Edge",
+      "track_count": 7,
+      "date_fields": {
+        "DATE": [
+          "1972"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1972",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Yes",
+      "album": "90125",
+      "path": "output/Yes/90125",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "1983"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1983",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dido",
+      "album": "Life for Rent",
+      "path": "output/Dido/Life for Rent",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dido",
+      "album": "No Angel",
+      "path": "output/Dido/No Angel",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Norah Jones",
+      "album": "Come Away With Me",
+      "path": "output/Norah Jones/Come Away With Me",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Foreigner",
+      "album": "Records",
+      "path": "output/Foreigner/Records",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1982"
+        ],
+        "ORIGINALDATE": [
+          "1982"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1982",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Valacar",
+      "album": "Throne of Skulls",
+      "path": "output/Valacar/Throne of Skulls",
+      "track_count": 5,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mastodon",
+      "album": "Live at the Aragon",
+      "path": "output/Mastodon/Live at the Aragon",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2011"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2011",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mastodon",
+      "album": "Blood Mountain",
+      "path": "output/Mastodon/Blood Mountain",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "Morning View",
+      "path": "output/Incubus/Morning View",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2001"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2001",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "Fungus Amongus",
+      "path": "output/Incubus/Fungus Amongus",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "Trust Fall (side A)",
+      "path": "output/Incubus/Trust Fall (side A)",
+      "track_count": 4,
+      "date_fields": {
+        "DATE": [
+          "2015"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2015",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "Enjoy Incubus",
+      "path": "output/Incubus/Enjoy Incubus",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "A Crow Left of the Murder\u2026",
+      "path": "output/Incubus/A Crow Left of the Murder\u2026",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Incubus",
+      "album": "Make Yourself",
+      "path": "output/Incubus/Make Yourself",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1999"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1999",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Les Claypool and the Holy Mackerel",
+      "album": "Highball With the Devil",
+      "path": "output/Les Claypool and the Holy Mackerel/Highball With the Devil",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "1996"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1996",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Yanni",
+      "album": "Live at the Acropolis",
+      "path": "output/Yanni/Live at the Acropolis",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Mugison",
+      "album": "Little Trip",
+      "path": "output/Mugison/Little Trip",
+      "track_count": 17,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "David Byrne",
+      "album": "Lead Us Not Into Temptation",
+      "path": "output/David Byrne/Lead Us Not Into Temptation",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "2003"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2003",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "U2",
+      "album": "War",
+      "path": "output/U2/War",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "Unknown"
+        ],
+        "ORIGINALDATE": [
+          "1983-02-28"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [
+        "Fix invalid date format: 'Unknown'"
+      ],
+      "primary_date": "Unknown",
+      "date_format": "missing",
+      "date_valid": false
+    },
+    {
+      "artist": "U2",
+      "album": "The Joshua Tree",
+      "path": "output/U2/The Joshua Tree",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1987"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1987",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Dead Cross",
+      "album": "II",
+      "path": "output/Dead Cross/II",
+      "track_count": 9,
+      "date_fields": {
+        "DATE": [
+          "2022"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2022",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Temple of the Dog",
+      "album": "Temple of the Dog",
+      "path": "output/Temple of the Dog/Temple of the Dog",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "1991"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1991",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Roy Orbison",
+      "album": "The All-Time Greatest Hits of Roy Orbison",
+      "path": "output/Roy Orbison/The All-Time Greatest Hits of Roy Orbison",
+      "track_count": 20,
+      "date_fields": {
+        "DATE": [
+          "1972"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1972",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Losalios",
+      "album": "Colorado Shit Dog",
+      "path": "output/Losalios/Colorado Shit Dog",
+      "track_count": 8,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Losalios",
+      "album": "The End of the Beauty",
+      "path": "output/Losalios/The End of the Beauty",
+      "track_count": 10,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Secret Chiefs 3- Traditionalists",
+      "album": "Le mani destre recise degli ultimi uomini",
+      "path": "output/Secret Chiefs 3- Traditionalists/Le mani destre recise degli ultimi uomini",
+      "track_count": 30,
+      "date_fields": {
+        "DATE": [
+          "2009"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2009",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Cure",
+      "album": "Mixed Up",
+      "path": "output/The Cure/Mixed Up",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1990"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1990",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Offspring",
+      "album": "Smash",
+      "path": "output/Offspring/Smash",
+      "track_count": 14,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Baroness",
+      "album": "Yellow & Green",
+      "path": "output/Baroness/Yellow & Green",
+      "track_count": 18,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Spacehog",
+      "album": "Resident Alien",
+      "path": "output/Spacehog/Resident Alien",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Oasis",
+      "album": "Some Might Say",
+      "path": "output/Oasis/Some Might Say",
+      "track_count": 6,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Oasis",
+      "album": "(What\u2019s the Story) Morning Glory",
+      "path": "output/Oasis/(What\u2019s the Story) Morning Glory",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1995"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1995",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Oasis",
+      "album": "Don\u2019t Believe the Truth",
+      "path": "output/Oasis/Don\u2019t Believe the Truth",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2005"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2005",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Oasis",
+      "album": "Definitely Maybe",
+      "path": "output/Oasis/Definitely Maybe",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "1994"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1994",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Oasis",
+      "album": "Be Here Now",
+      "path": "output/Oasis/Be Here Now",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Philm",
+      "album": "Harmonic",
+      "path": "output/Philm/Harmonic",
+      "track_count": 15,
+      "date_fields": {
+        "DATE": [
+          "2012"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2012",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Drifters",
+      "album": "Golden Hits",
+      "path": "output/The Drifters/Golden Hits",
+      "track_count": 10,
+      "date_fields": {},
+      "date_consistency": "unknown",
+      "issues": [
+        "No DATE or YEAR field found"
+      ],
+      "recommendations": [
+        "Add DATE field with release date"
+      ]
+    },
+    {
+      "artist": "Trevor Dunn's Trio-Convulsant",
+      "album": "Sister Phantom Owl Fish",
+      "path": "output/Trevor Dunn's Trio-Convulsant/Sister Phantom Owl Fish",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2004"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2004",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Les Claypool Frog Brigade",
+      "album": "Purple Onion",
+      "path": "output/The Les Claypool Frog Brigade/Purple Onion",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "album": "Whatever People Say I Am, That\u2019s What I\u2019m Not",
+      "path": "output/Arctic Monkeys/Whatever People Say I Am, That\u2019s What I\u2019m Not",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2006"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2006",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "Trevor Dunn",
+      "album": "Nocturnes",
+      "path": "output/Trevor Dunn/Nocturnes",
+      "track_count": 11,
+      "date_fields": {
+        "DATE": [
+          "2019"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2019",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mighty Mighty Bosstones",
+      "album": "Let\u2019s Face It",
+      "path": "output/The Mighty Mighty Bosstones/Let\u2019s Face It",
+      "track_count": 12,
+      "date_fields": {
+        "DATE": [
+          "1997"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "1997",
+      "date_format": "year_only",
+      "date_valid": true
+    },
+    {
+      "artist": "The Mighty Mighty Bosstones",
+      "album": "A Jackknife to a Swan",
+      "path": "output/The Mighty Mighty Bosstones/A Jackknife to a Swan",
+      "track_count": 13,
+      "date_fields": {
+        "DATE": [
+          "2002"
+        ]
+      },
+      "date_consistency": "unknown",
+      "issues": [],
+      "recommendations": [],
+      "primary_date": "2002",
+      "date_format": "year_only",
+      "date_valid": true
+    }
+  ]
+}

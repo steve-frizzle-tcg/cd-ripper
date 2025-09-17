@@ -42,34 +42,15 @@ cd_ripping/
 └── logs/                  # 📝 Operation logs
 ```
 
-## Core Features
+## Key Features
 
-### 🎵 CD Ripping & Metadata
-- **Error-corrected ripping** using cdparanoia
-- **High-quality FLAC** encoding with verification
-- **Smart metadata lookup** via MusicBrainz with catalog number priority
-- **Multi-disc support** with proper disc-track numbering
-- **Various Artists** support for compilations and soundtracks
-- **Professional metadata** following industry standards
-
-### 🎨 Cover Art Management
-- **Discogs integration** for high-quality cover art
-- **Batch processing** for multiple albums
-- **Quality assessment** and validation
-- **Manual replacement** tools
-- **Automatic embedding** in FLAC files
-
-### 📊 Collection Analysis
-- **Comprehensive reporting** on collection status
-- **Cover art quality assessment**
-- **Missing content identification**
-- **Integrity validation**
-
-### 🔧 Maintenance Tools
-- **Retroactive metadata** generation for existing albums
-- **Artist migration** and reorganization
-- **Compilation identification** and organization
-- **Directory cleanup** utilities
+- **Automated CD Ripping**: Extract FLAC files with comprehensive metadata from MusicBrainz
+- **Cover Art Management**: Download and manage album artwork via Discogs API
+- **Collection Analysis**: Generate reports on collection completeness and quality
+- **Date Metadata Standardization**: Analyze and fix date inconsistencies using Vorbis comment standards
+- **Metadata Enrichment**: Enhance existing files with additional metadata
+- **Batch Processing**: Handle multiple albums efficiently
+- **Quality Validation**: Ensure metadata consistency and completeness
 
 ## Installation & Setup
 
@@ -183,6 +164,18 @@ python3 cd_manager.py cleanup
 Remove empty artist directories after reorganization.
 
 ### Specialized Tools
+
+#### `analyze-dates` - Date metadata analysis and standardization
+```bash
+python3 cd_manager.py analyze-dates                    # Analyze date consistency
+python3 cd_manager.py analyze-dates --apply            # Fix date issues
+python3 cd_manager.py analyze-dates --export dates.json # Export analysis
+```
+Analyze and fix date metadata inconsistencies across the collection. Ensures compliance with FLAC Vorbis comment standards by:
+- Converting "Unknown" dates using ORIGINALDATE when available
+- Standardizing date formats to ISO 8601 (YYYY-MM-DD, YYYY-MM, or YYYY)
+- Replacing deprecated YEAR fields with proper DATE fields
+- Reporting collection-wide date format distribution
 
 #### `fix-single` - Fix single metadata
 ```bash
