@@ -27,6 +27,45 @@ python3 cd_manager.py rip
 7. Organize into proper directory structure
 8. Generate rip_info.json
 
+## rip_individual_track.py - Individual Track Recovery System
+
+Complete partially ripped albums by adding missing tracks without affecting existing ones.
+
+### Features
+- Smart detection of missing tracks from any album
+- Interactive album selection from incomplete albums
+- Enhanced error recovery for problematic tracks
+- Automatic metadata integration with existing collection
+- Preserves existing tracks and organization
+- Multiple recovery methods (standard, aggressive error correction, force through errors)
+
+### Usage
+```bash
+# Interactive mode - select from incomplete albums
+python3 cd_manager.py rip-track
+
+# Direct mode - specify album path
+python3 cd_manager.py rip-track "/path/to/album"
+
+# List incomplete albums
+python3 cd_manager.py rip-track --list-incomplete
+
+# List all albums with completion status
+python3 cd_manager.py rip-track --list-all
+```
+
+### Recovery Methods
+1. **Standard Rip**: Normal cdparanoia extraction
+2. **Enhanced Recovery**: Reduced overlap with maximum retries (`-o 1 -Y`)
+3. **Force Through Errors**: Skip verification and force output (`-Z`, `-X`)
+4. **Extended Timeout**: Up to 10 minutes for difficult tracks
+
+### Use Cases
+- Complete albums where individual tracks failed during original rip
+- Re-rip damaged or corrupted tracks
+- Add tracks that were skipped due to errors
+- Recovery from CD reading issues or timeouts
+
 ## enrich_metadata.py - Metadata Enrichment System
 
 Professional metadata enrichment system that applies industry standards to FLAC files.

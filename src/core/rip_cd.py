@@ -841,14 +841,24 @@ class CDRipper:
             tracks = metadata.get('tracks', [])
             renamed_files = []
             
-            for i, flac_path in enumerate(flac_files):
+            for flac_path in flac_files:
                 try:
-                    if i < len(tracks):
-                        # Use MusicBrainz track title
-                        track_title = tracks[i]['title']
+                    # Extract actual track number from filename (Track_02.flac -> 2)
+                    match = re.search(r'Track_(\d+)\.flac', flac_path.name)
+                    if match:
+                        actual_track_num = int(match.group(1))
+                        track_index = actual_track_num - 1  # Convert to 0-based index
+                    else:
+                        # Fallback: use position in sorted list
+                        track_index = flac_files.index(flac_path)
+                        actual_track_num = track_index + 1
+                    
+                    if track_index < len(tracks):
+                        # Use MusicBrainz track title for the actual track number
+                        track_title = tracks[track_index]['title']
                     else:
                         # Fallback to generic name
-                        track_title = f"Track {i+1:02d}"
+                        track_title = f"Track {actual_track_num:02d}"
                     
                     # Sanitize filename
                     safe_title = track_title.replace('/', '_').replace('\\', '_').replace(':', '_')
@@ -856,17 +866,17 @@ class CDRipper:
                     safe_title = safe_title.replace('<', '').replace('>', '').replace('|', '_')
                     
                     # New format with optional artist for Various Artists releases
-                    if i < len(tracks) and tracks[i].get('artist') and metadata.get('album_type') in ['soundtrack', 'compilation']:
+                    if track_index < len(tracks) and tracks[track_index].get('artist') and metadata.get('album_type') in ['soundtrack', 'compilation']:
                         # Format: 01-01. Artist - Track Title.flac
                         # Clean the artist name first
-                        clean_artist = self.clean_artist_name(tracks[i]['artist'])
+                        clean_artist = self.clean_artist_name(tracks[track_index]['artist'])
                         safe_artist = clean_artist.replace('/', '_').replace('\\', '_').replace(':', '_')
                         safe_artist = safe_artist.replace('?', '').replace('*', '').replace('"', "'")
                         safe_artist = safe_artist.replace('<', '').replace('>', '').replace('|', '_')
-                        new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_artist} - {safe_title}.flac"
+                        new_filename = f"{disc_number:02d}-{actual_track_num:02d}. {safe_artist} - {safe_title}.flac"
                     else:
                         # Regular format: 01-01. Track Title.flac
-                        new_filename = f"{disc_number:02d}-{i+1:02d}. {safe_title}.flac"
+                        new_filename = f"{disc_number:02d}-{actual_track_num:02d}. {safe_title}.flac"
                     
                     new_path = album_dir / new_filename
                     
@@ -895,9 +905,19 @@ class CDRipper:
             total_tracks = len(flac_files)
             tracks = metadata.get('tracks', [])
             
-            for i, flac_path in enumerate(flac_files):
+            for flac_path in flac_files:
                 try:
                     audio = FLAC(str(flac_path))
+                    
+                    # Extract track number from filename (01-02. Song.flac -> 2)
+                    match = re.search(r'01-(\d+)\.', flac_path.name)
+                    if match:
+                        actual_track_num = int(match.group(1))
+                        track_index = actual_track_num - 1  # Convert to 0-based index
+                    else:
+                        # Fallback: use position in sorted list
+                        track_index = flac_files.index(flac_path)
+                        actual_track_num = track_index + 1
                     
                     # Basic metadata
                     audio['ALBUM'] = metadata['album']
@@ -908,29 +928,29 @@ class CDRipper:
                         audio['ALBUMARTIST'] = metadata['album_artist']
                     
                     # Enhanced track numbering with proper Vorbis comment format
-                    if i < len(tracks) and 'disc_number' in tracks[i]:
-                        disc_num = tracks[i]['disc_number']
-                        track_num = tracks[i]['track_number']
+                    if track_index < len(tracks) and 'disc_number' in tracks[track_index]:
+                        disc_num = tracks[track_index]['disc_number']
+                        track_num = tracks[track_index]['track_number']
                         audio['TRACKNUMBER'] = f"{track_num:02d}"  # Simple track number (Vorbis standard)
                         audio['DISCNUMBER'] = str(disc_num)
                         audio['TOTALDISCS'] = str(metadata.get('disc_count', 1))
-                        audio['TITLE'] = tracks[i]['title']
+                        audio['TITLE'] = tracks[track_index]['title']
                         
                         # Set track artist (individual track artist or album artist)
-                        if tracks[i].get('artist'):
-                            audio['ARTIST'] = tracks[i]['artist']
+                        if tracks[track_index].get('artist'):
+                            audio['ARTIST'] = tracks[track_index]['artist']
                         else:
                             audio['ARTIST'] = metadata['artist']
                     else:
                         # Fallback for single disc or unknown structure
-                        audio['TRACKNUMBER'] = f"{i+1:02d}"  # Simple track number (Vorbis standard)
+                        audio['TRACKNUMBER'] = f"{actual_track_num:02d}"  # Simple track number (Vorbis standard)
                         audio['DISCNUMBER'] = "1"
                         audio['TOTALDISCS'] = "1"
                         audio['ARTIST'] = metadata['artist']
-                        if i < len(tracks):
-                            audio['TITLE'] = tracks[i]['title']
+                        if track_index < len(tracks):
+                            audio['TITLE'] = tracks[track_index]['title']
                         else:
-                            audio['TITLE'] = f"Track {i+1:02d}"
+                            audio['TITLE'] = f"Track {actual_track_num:02d}"
                     
                     audio['TOTALTRACKS'] = str(total_tracks)
                     
@@ -966,14 +986,22 @@ class CDRipper:
             total_tracks = len(flac_files)
             disc_number = metadata.get('disc_number', 1)
             
-            for i, flac_path in enumerate(flac_files, 1):
+            for flac_path in flac_files:
                 try:
                     audio = FLAC(str(flac_path))
+                    
+                    # Extract track number from filename (01-02. Song.flac -> 2)
+                    match = re.search(r'01-(\d+)\.', flac_path.name)
+                    if match:
+                        actual_track_num = int(match.group(1))
+                    else:
+                        # Fallback: use position in sorted list + 1
+                        actual_track_num = flac_files.index(flac_path) + 1
                     
                     # Basic metadata with proper Vorbis comment format
                     audio['ALBUM'] = metadata['album']
                     audio['DATE'] = metadata['date']
-                    audio['TRACKNUMBER'] = f"{i:02d}"  # Simple track number (Vorbis standard)
+                    audio['TRACKNUMBER'] = f"{actual_track_num:02d}"  # Simple track number (Vorbis standard)
                     audio['DISCNUMBER'] = str(disc_number)
                     audio['TOTALDISCS'] = "1"  # Will be updated if multi-disc detected
                     audio['TOTALTRACKS'] = str(total_tracks)
@@ -984,14 +1012,14 @@ class CDRipper:
                     
                     # For Various Artists releases, ask for individual track artists
                     if metadata.get('album_type') in ['soundtrack', 'compilation']:
-                        track_artist = input(f"Enter artist for track {i} (or press Enter for 'Unknown Artist'): ").strip()
+                        track_artist = input(f"Enter artist for track {actual_track_num} (or press Enter for 'Unknown Artist'): ").strip()
                         audio['ARTIST'] = track_artist or "Unknown Artist"
                     else:
                         audio['ARTIST'] = metadata['artist']
                     
                     # Add track title (user can rename later)
-                    track_title = input(f"Enter title for track {i} (or press Enter for 'Track {i:02d}'): ").strip()
-                    audio['TITLE'] = track_title or f"Track {i:02d}"
+                    track_title = input(f"Enter title for track {actual_track_num} (or press Enter for 'Track {actual_track_num:02d}'): ").strip()
+                    audio['TITLE'] = track_title or f"Track {actual_track_num:02d}"
                     
                     if metadata.get('mbid') and metadata['mbid'] != 'user-entered':
                         audio['MUSICBRAINZ_ALBUMID'] = metadata['mbid']

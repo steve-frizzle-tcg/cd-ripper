@@ -10,6 +10,9 @@ A comprehensive, well-organized system for ripping CDs to high-quality FLAC file
 # Rip a new CD
 python3 cd_manager.py rip
 
+# Complete partially ripped albums
+python3 cd_manager.py rip-track --list-incomplete
+
 # Check collection status
 python3 cd_manager.py report
 
@@ -45,6 +48,7 @@ cd_ripping/
 ## Key Features
 
 - **Automated CD Ripping**: Extract FLAC files with comprehensive metadata from MusicBrainz
+- **Individual Track Recovery**: Complete partially ripped albums with enhanced error recovery
 - **Cover Art Management**: Download and manage album artwork via Discogs API
 - **Collection Analysis**: Generate reports on collection completeness and quality
 - **Date Metadata Standardization**: Analyze and fix date inconsistencies using Vorbis comment standards
@@ -88,6 +92,15 @@ pip install musicbrainzngs requests mutagen pillow
 python3 cd_manager.py rip
 ```
 Interactive CD ripping with metadata lookup and cover art download.
+
+#### `rip-track` - Complete partially ripped albums
+```bash
+python3 cd_manager.py rip-track                           # Interactive mode - select album
+python3 cd_manager.py rip-track "/path/to/album"          # Direct mode - specify album
+python3 cd_manager.py rip-track --list-incomplete         # List albums missing tracks
+python3 cd_manager.py rip-track --list-all                # List all albums with status
+```
+Add missing tracks to partially ripped albums without affecting existing tracks. Features enhanced error recovery for problematic tracks and automatic metadata integration.
 
 #### `enrich` - Enrich FLAC metadata
 ```bash
@@ -287,6 +300,8 @@ python3 cd_manager.py enrich --apply
 2. **MusicBrainz timeouts**: The system includes automatic rate limiting
 3. **Cover art failures**: Try the manual cover updater for problematic albums
 4. **Missing dependencies**: Reinstall with `pip install -r requirements.txt`
+5. **Track ripping timeouts**: Use `rip-track` with enhanced error recovery for problematic tracks
+6. **Incomplete albums**: Check with `rip-track --list-incomplete` and complete missing tracks
 
 ### Logs
 

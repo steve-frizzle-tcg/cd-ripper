@@ -11,6 +11,7 @@ Usage:
 Commands:
     Core Operations:
         rip            - Rip a CD to FLAC with metadata
+        rip-track      - Complete partially ripped albums by adding missing tracks
         enrich         - Enrich existing FLAC files with metadata
     
     Cover Art Management:
@@ -39,6 +40,8 @@ Commands:
 
 Examples:
     python3 cd_manager.py rip
+    python3 cd_manager.py rip-track --list-incomplete
+    python3 cd_manager.py rip-track "/path/to/album"
     python3 cd_manager.py covers
     python3 cd_manager.py report --detailed
     python3 cd_manager.py batch-covers --auto --limit 10
@@ -79,6 +82,11 @@ def main():
     
     # Core Operations
     core_parser = subparsers.add_parser('rip', help='Rip a CD to FLAC')
+    
+    rip_track_parser = subparsers.add_parser('rip-track', help='Complete partially ripped albums')
+    rip_track_parser.add_argument('album_path', nargs='?', help='Path to album directory')
+    rip_track_parser.add_argument('--list-incomplete', action='store_true', help='List incomplete albums')
+    rip_track_parser.add_argument('--list-all', action='store_true', help='List all albums')
     
     enrich_parser = subparsers.add_parser('enrich', help='Enrich FLAC metadata')
     enrich_parser.add_argument('--apply', action='store_true', help='Apply changes')
@@ -156,6 +164,7 @@ def main():
     command_map = {
         # Core Operations
         'rip': script_root / 'src' / 'core' / 'rip_cd.py',
+        'rip-track': script_root / 'src' / 'core' / 'rip_individual_track.py',
         'enrich': script_root / 'src' / 'core' / 'enrich_metadata.py',
         
         # Cover Art Management
@@ -212,6 +221,14 @@ def main():
     elif args.command == 'migrate-artist':
         script_args.extend([args.old_name, args.new_name])
     
+    elif args.command == 'rip-track':
+        if args.album_path:
+            script_args.append(args.album_path)
+        if args.list_incomplete:
+            script_args.append('--list-incomplete')
+        if args.list_all:
+            script_args.append('--list-all')
+    
     elif args.command == 'find-missing':
         if not args.interactive:
             script_args.append('--simple')
@@ -247,8 +264,10 @@ def main():
             script_args.append('--fix-all')
     
     # Run the target script
-    print(f"🎵 Running: {script_path.name}")
-    print("=" * 60)
+    # Only show running message for interactive commands
+    if args.command not in ['rip-track']:
+        print(f"🎵 Running: {script_path.name}")
+        print("=" * 60)
     run_script(script_path, script_args)
 
 if __name__ == "__main__":
