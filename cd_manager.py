@@ -32,6 +32,10 @@ Commands:
     Specialized Tools:
         fix-single     - Fix metadata for singles with generic names
         test-choice    - Test artist choice functionality
+        analyze-dates  - Analyze and fix date metadata consistency
+        fix-multidisc  - Fix multi-disc album metadata (DISCNUMBER, TRACKNUMBER)
+        normalize-tracks - Normalize track numbers to Vorbis standards
+        scan-multidisc - Scan collection for multi-disc albums needing fixes
 
 Examples:
     python3 cd_manager.py rip
@@ -135,6 +139,11 @@ def main():
     tracknorm_parser.add_argument('path', nargs='?', default='output', help='Path to collection or album directory')
     tracknorm_parser.add_argument('--apply', action='store_true', help='Apply fixes (default is dry run)')
     
+    # Multi-disc collection scanner
+    multiscan_parser = subparsers.add_parser('scan-multidisc', help='Scan collection for multi-disc albums needing metadata fixes')
+    multiscan_parser.add_argument('output_path', nargs='?', default='output', help='Path to music collection output directory')
+    multiscan_parser.add_argument('--fix-all', action='store_true', help='Automatically fix all albums with issues')
+    
     args = parser.parse_args()
     
     if not args.command:
@@ -171,6 +180,7 @@ def main():
         'analyze-dates': script_root / 'src' / 'tools' / 'date_analyzer.py',
         'fix-multidisc': script_root / 'src' / 'tools' / 'multi_disc_fixer.py',
         'normalize-tracks': script_root / 'src' / 'tools' / 'track_normalizer.py',
+        'scan-multidisc': script_root / 'src' / 'tools' / 'scan_multidisc_collection.py',
     }
     
     if args.command not in command_map:
@@ -230,6 +240,11 @@ def main():
         script_args.append(args.path)
         if args.apply:
             script_args.append('--apply')
+    
+    elif args.command == 'scan-multidisc':
+        script_args.append(args.output_path)
+        if args.fix_all:
+            script_args.append('--fix-all')
     
     # Run the target script
     print(f"🎵 Running: {script_path.name}")
