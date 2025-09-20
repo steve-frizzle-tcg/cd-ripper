@@ -598,14 +598,18 @@ class CDRipper:
         
         # Fall back to existing artist/album search
         try:
-            self.logger.info(f"Searching MusicBrainz for: {artist} - {album} ({track_count} tracks, type: {album_type})")
-            
-            # Search for releases - different strategies for different album types
-            if album_type in ["soundtrack", "compilation"]:
-                # For Various Artists releases, search by album title first
+            if album_type == "soundtrack":
+                self.logger.info(f"Searching MusicBrainz for soundtrack: {album} ({track_count} tracks)")
+                # For soundtracks, search by album title and try to find Various Artists releases
+                query = f'release:"{album}" AND artist:"Various Artists"'
+                self.logger.info("Searching for soundtrack by album title")
+            elif album_type == "compilation":
+                self.logger.info(f"Searching MusicBrainz for compilation: {album} ({track_count} tracks)")
+                # For compilations, search by album title
                 query = f'release:"{album}"'
-                self.logger.info("Searching for Various Artists release by album title")
+                self.logger.info("Searching for compilation by album title")
             else:
+                self.logger.info(f"Searching MusicBrainz for: {artist} - {album} ({track_count} tracks)")
                 # Regular album search
                 query = f'artist:"{artist}" AND release:"{album}"'
             
@@ -613,9 +617,14 @@ class CDRipper:
             
             if not releases.get('release-list'):
                 self.logger.info("No exact matches found, trying broader search...")
-                if album_type in ["soundtrack", "compilation"]:
-                    # Try broader search for Various Artists
+                if album_type == "soundtrack":
+                    # Try broader search for soundtracks without artist constraint
                     query = f'release:{album}'
+                    self.logger.info("Trying broader soundtrack search")
+                elif album_type == "compilation":
+                    # Try broader search for compilations
+                    query = f'release:{album}'
+                    self.logger.info("Trying broader compilation search")
                 else:
                     # Try broader search without quotes
                     query = f'artist:{artist} AND release:{album}'
@@ -1064,12 +1073,18 @@ class CDRipper:
             # Get basic info from user
             metadata = self.get_user_metadata()
             
-            # Create album directory using nested structure: output > artist > album
-            safe_artist = metadata['artist'].replace('/', '_')
+            # Create album directory using proper structure based on album type
             safe_album = metadata['album'].replace('/', '_')
             
-            artist_dir = self.output_dir / safe_artist
-            album_dir = artist_dir / safe_album
+            if metadata.get('album_type') == 'soundtrack':
+                # Soundtracks go directly in output/Soundtracks/Album Name
+                album_dir = self.output_dir / "Soundtracks" / safe_album
+            else:
+                # Regular albums and compilations use artist directory structure
+                safe_artist = metadata['artist'].replace('/', '_')
+                artist_dir = self.output_dir / safe_artist
+                album_dir = artist_dir / safe_album
+            
             album_dir.mkdir(parents=True, exist_ok=True)
             
             self.logger.info(f"Album directory: {album_dir}")
@@ -1101,12 +1116,19 @@ class CDRipper:
                 mb_metadata = self.search_musicbrainz_simple(metadata['artist'], metadata['album'])
             
             if mb_metadata:
-                # Check if MusicBrainz artist differs significantly from user input
+                # Handle artist name choice based on album type
                 original_artist = metadata['artist']
                 mb_artist = mb_metadata.get('artist', original_artist)
                 
-                # Ask user if they want to keep original artist name vs MusicBrainz version
-                if original_artist.lower() != mb_artist.lower() and not self.is_same_artist_different_language(original_artist, mb_artist):
+                if metadata.get('album_type') == 'soundtrack':
+                    # For soundtracks, always keep "Various Artists" as artist/album_artist
+                    # but use MusicBrainz data for track info and other metadata
+                    mb_metadata['artist'] = 'Various Artists'
+                    mb_metadata['album_artist'] = 'Various Artists'
+                    metadata.update(mb_metadata)
+                    self.logger.info("Soundtrack: Using 'Various Artists' for artist/album_artist, MusicBrainz data for tracks")
+                elif original_artist.lower() != mb_artist.lower() and not self.is_same_artist_different_language(original_artist, mb_artist):
+                    # Ask user for non-soundtrack releases when artist names differ significantly
                     print(f"\n🎵 Artist Name Choice:")
                     print(f"   1. Your input: '{original_artist}' (keeps English/familiar name)")
                     print(f"   2. MusicBrainz: '{mb_artist}' (official database name)")
