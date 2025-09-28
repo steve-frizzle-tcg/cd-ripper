@@ -32,6 +32,7 @@ Commands:
     
     Specialized Tools:
         fix-single     - Fix metadata for singles with generic names
+        fix-metadata   - Fix incorrect MusicBrainz metadata matches
         test-choice    - Test artist choice functionality
         analyze-dates  - Analyze and fix date metadata consistency
         fix-multidisc  - Fix multi-disc album metadata (DISCNUMBER, TRACKNUMBER)
@@ -46,6 +47,7 @@ Examples:
     python3 cd_manager.py report --detailed
     python3 cd_manager.py batch-covers --auto --limit 10
     python3 cd_manager.py migrate-artist "Old Name" "New Name"
+    python3 cd_manager.py fix-metadata "/path/to/album" --apply --rename
 """
 
 import sys
@@ -128,6 +130,13 @@ def main():
     fix_single_parser = subparsers.add_parser('fix-single', help='Fix single metadata')
     fix_single_parser.add_argument('album_path', help='Path to single album')
     
+    fix_metadata_parser = subparsers.add_parser('fix-metadata', help='Fix incorrect MusicBrainz metadata matches')
+    fix_metadata_parser.add_argument('album_path', help='Path to album directory')
+    fix_metadata_parser.add_argument('--search', help='Custom search query')
+    fix_metadata_parser.add_argument('--mbid', help='Specific MusicBrainz ID to apply')
+    fix_metadata_parser.add_argument('--apply', action='store_true', help='Apply changes (default is preview)')
+    fix_metadata_parser.add_argument('--rename', action='store_true', help='Also rename files to match metadata')
+    
     test_parser = subparsers.add_parser('test-choice', help='Test artist choice')
     
     # Date analyzer tool
@@ -185,6 +194,7 @@ def main():
         
         # Specialized Tools
         'fix-single': script_root / 'src' / 'tools' / 'single_metadata_updater.py',
+        'fix-metadata': script_root / 'src' / 'tools' / 'metadata_corrector.py',
         'test-choice': script_root / 'src' / 'tools' / 'test_artist_choice.py',
         'analyze-dates': script_root / 'src' / 'tools' / 'date_analyzer.py',
         'fix-multidisc': script_root / 'src' / 'tools' / 'multi_disc_fixer.py',
@@ -238,6 +248,17 @@ def main():
     
     elif args.command == 'fix-single':
         script_args.append(args.album_path)
+    
+    elif args.command == 'fix-metadata':
+        script_args.append(args.album_path)
+        if args.search:
+            script_args.extend(['--search', args.search])
+        if args.mbid:
+            script_args.extend(['--mbid', args.mbid])
+        if args.apply:
+            script_args.append('--apply')
+        if args.rename:
+            script_args.append('--rename')
     
     elif args.command == 'analyze-dates':
         script_args.append(args.output_dir)

@@ -4,6 +4,7 @@ FLAC Metadata Enrichment System
 Applies music industry standard metadata to FLAC files and maintains consistency across collection.
 """
 
+import argparse
 import json
 import re
 import time
@@ -88,12 +89,15 @@ class FLACMetadataEnricher:
         try:
             audio = FLAC(str(flac_path))
             
+            # Convert keys to uppercase for comparison (FLAC stores lowercase, Vorbis standard is uppercase)
+            current_fields_upper = {key.upper() for key in audio.keys()}
+            
             analysis = {
                 'file_path': str(flac_path),
-                'current_fields': set(audio.keys()),
-                'missing_required': self.standard.REQUIRED_FIELDS - set(audio.keys()),
-                'missing_standard': self.standard.STANDARD_FIELDS - set(audio.keys()),
-                'has_musicbrainz': bool(self.standard.MUSICBRAINZ_FIELDS & set(audio.keys())),
+                'current_fields': current_fields_upper,
+                'missing_required': self.standard.REQUIRED_FIELDS - current_fields_upper,
+                'missing_standard': self.standard.STANDARD_FIELDS - current_fields_upper,
+                'has_musicbrainz': bool(self.standard.MUSICBRAINZ_FIELDS & current_fields_upper),
                 'has_cover_art': len(audio.pictures) > 0,
                 'metadata': {key: audio.get(key, []) for key in audio.keys()}
             }
@@ -593,9 +597,78 @@ class FLACMetadataEnricher:
 
 def main():
     """Main entry point"""
+    parser = argparse.ArgumentParser(description="FLAC Metadata Enrichment System")
+    parser.add_argument('--album', help='Path to specific album directory to process')
+    parser.add_argument('--apply', action='store_true', help='Apply changes (default is dry run)')
+    args = parser.parse_args()
+    
     print("=== FLAC Metadata Enrichment System ===")
     print("Applies music industry standard metadata to FLAC files")
     
+    # If specific album is specified, process just that album
+    if args.album:
+        album_path = Path(args.album)
+        if not album_path.exists() or not album_path.is_dir():
+            print(f"❌ Album directory not found: {args.album}")
+            return 1
+        
+        # Check if it has FLAC files
+        flac_files = list(album_path.glob("*.flac"))
+        if not flac_files:
+            print(f"❌ No FLAC files found in: {args.album}")
+            return 1
+        
+        dry_run = not args.apply
+        enricher = FLACMetadataEnricher(dry_run=dry_run)
+        
+        print(f"\n🎵 Processing album: {album_path.name}")
+        if dry_run:
+            print("🔍 Analysis mode (no changes will be made)")
+        else:
+            print("✅ Apply mode (changes will be made)")
+        
+        # Analyze current metadata
+        print(f"\n📁 {album_path.relative_to(enricher.output_dir) if album_path.is_relative_to(enricher.output_dir) else album_path}")
+        sample_file = flac_files[0]
+        analysis = enricher.analyze_current_metadata(sample_file)
+        
+        if 'error' not in analysis:
+            print(f"   📊 Current fields: {len(analysis['current_fields'])}")
+            print(f"   ❌ Missing required: {len(analysis['missing_required'])}")
+            print(f"   ⚠️  Missing standard: {len(analysis['missing_standard'])}")
+            print(f"   🎵 Has MusicBrainz: {analysis['has_musicbrainz']}")
+            print(f"   🖼️  Has cover art: {analysis['has_cover_art']}")
+            
+            if analysis['missing_required']:
+                print(f"   📝 Missing required fields: {', '.join(sorted(analysis['missing_required']))}")
+            if analysis['missing_standard']:
+                print(f"   📝 Missing standard fields: {', '.join(sorted(analysis['missing_standard']))}")
+        
+        # Process the album if not dry run
+        if not dry_run:
+            print(f"\n🚀 Enriching metadata for {len(flac_files)} FLAC files...")
+            results = enricher.enrich_album_metadata(album_path)
+            
+            if 'error' in results:
+                print(f"❌ Error: {results['error']}")
+                return 1
+            
+            print(f"\n📊 Results:")
+            print(f"   📁 Total files: {results['total_files']}")
+            print(f"   ✅ Files updated: {results['updated_files']}")
+            print(f"   🖼️  Cover art added: {results['files_with_cover_added']}")
+            
+            if results['errors']:
+                print(f"   ❌ Errors: {len(results['errors'])}")
+                for error in results['errors']:
+                    print(f"      {error}")
+            
+            if results['updated_files'] > 0:
+                print(f"\n🎉 Successfully enriched {results['updated_files']} FLAC files!")
+        
+        return 0
+    
+    # Original interactive mode
     print("\nChoose operation:")
     print("1. Analyze current metadata status (no changes)")
     print("2. Enrich metadata for all albums")
