@@ -1,5 +1,7 @@
 # CD Manager - Professional CD Collection Management System
 
+**Note:** This is a primarily vibe coded project.
+
 ## Overview
 
 A comprehensive, well-organized system for ripping CDs to high-quality FLAC files with professional metadata enrichment, cover art management, and collection maintenance tools. The system has evolved from a single script into a modular, easy-to-use suite of tools accessible through a unified command-line interface.
